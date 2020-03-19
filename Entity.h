@@ -32,11 +32,6 @@ protected:
 	Vector Position = { 0,0 };
 	Vector Velocity{ 0, 0 };
 
-	//float m_X = 0;
-	//float m_Y = 0;
-	int m_PrevX = 0;
-	int m_PrevY = 0;
-
 	int m_DrawX = 0;
 
 	std::string Filename = "";

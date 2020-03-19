@@ -17,7 +17,7 @@ Game::Game()
 	{
 		printf("WINDOW initialisation failed: %s\n", SDL_GetError());
 		printf("Press any key to continue\n");
-		getchar();
+		//getchar();
 		return;
 	}
 
@@ -29,7 +29,7 @@ Game::Game()
 	{
 		printf("RENDERER initialisation failed: %s\n", SDL_GetError());
 		printf("Press any key to continue\n");
-		getchar();
+		//getchar();
 		return;
 	}
 
@@ -90,7 +90,7 @@ Game::~Game()
 void Game::GameLoop()
 {
 
-	while (m_Player->HasPlayerWon() == false) //Game ends if 
+	while (m_Player->HasPlayerWon() == false) //Game ends if player collects 5 coins and reaches end flag
 	{
 		//Check for input
 		CheckKeyPressed();

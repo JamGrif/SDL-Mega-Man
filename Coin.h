@@ -9,7 +9,7 @@ public:
 
 	void Update();
 
-	int IsCoinCollected(); //returns the coin that has been collected
+	bool IsCoinCollected(); //returns the coin that has been collected
 
 private:
 

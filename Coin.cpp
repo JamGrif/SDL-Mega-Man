@@ -33,7 +33,7 @@ void Coin::Update()
 
 }
 
-int Coin::IsCoinCollected()
+bool Coin::IsCoinCollected()
 {
 	if (CoinCollected && !AppliedCoinAddition) 
 	{

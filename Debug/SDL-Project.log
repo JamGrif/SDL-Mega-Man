@@ -1,0 +1,18 @@
+﻿  Coin.cpp
+  Creature.cpp
+  Entity.cpp
+  Game.cpp
+  Input.cpp
+  Level.cpp
+  main.cpp
+  Goomba.cpp
+  Player.cpp
+  Sky.cpp
+  UI.cpp
+  Generating Code...
+C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Coin.cpp(44): warning C4715: 'Coin::IsCoinCollected': not all control paths return a value
+  SDL-Project.vcxproj -> C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Project.exe
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.

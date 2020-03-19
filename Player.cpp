@@ -85,7 +85,6 @@ void Player::Move(char Direction)
 
 void Player::Update()
 {
-	//Save creatures previous position so they can move back if they cant move
 
 	//If Velocity exceeds MaxVelocity then lower Velocity down to MaxVelocity  
 	if (Velocity.x > m_MaxVelocity) { Velocity.x = m_MaxVelocity; }
@@ -99,11 +98,6 @@ void Player::Update()
 
 	//Check if the player is grounded or not
 	IsGrounded = levelinfo->IsWall(BotLeftPosX, BotLeftPosY + 1, BotRightPosX, BotRightPosY + 1) == true ? true : false;
-
-	//std::cout << "IsGrounded equals " << IsGrounded << std::endl;
-	//std::cout << "IsJumping equals " << IsJumping << std::endl;
-	//std::cout << "AppliedGravity equals " << AppliedGravity << std::endl;
-	//std::cout << "Velocity.y equals " << Velocity.y << std::endl;
 
 	if (IsGrounded == false) //If the player is not grounded then apply gravity
 	{
@@ -141,7 +135,6 @@ void Player::Update()
 		//Check above the player and if they hit something then stop jumping
 		if (levelinfo->IsWall(TopLeftPosX, TopLeftPosY - 1, TopRightPosX, TopRightPosY - 1) == true)
 		{
-			//std::cout << "Player hit something above them" << std::endl;
 			AppliedGravity = false;
 			IsJumping = false;
 			m_CurrentJumpTick = 0;

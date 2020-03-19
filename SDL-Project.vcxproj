@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\SDL-Project\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\SDL-Project\SDL\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDL-Mega-Man\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDL-Mega-Man\SDL\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\SDL-Project\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\SDL-Project\SDL\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDL-Mega-Man\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDL-Mega-Man\SDL\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,10 +90,10 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)..\SDL-Project\SDL\lib\x86\SDL2.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\libfreetype-6.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
+      <Command>copy /Y "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\SDL2.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\libfreetype-6.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
  
     </Command>
     </PostBuildEvent>
@@ -126,10 +126,10 @@ copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)..\SDL-Project\SDL\lib\x86\SDL2.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\libfreetype-6.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
-copy "$(SolutionDir)..\SDL-Project\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
+      <Command>copy /Y "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\SDL2.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\libfreetype-6.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
+copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
  
     </Command>
     </PostBuildEvent>
