@@ -3,12 +3,12 @@
 Player::Player(Renderer* renderer, int xpos, int ypos)
 	:Creature(renderer, xpos, ypos)
 {
-	//player is 64 pixels wide and 128 pixels tall
-	m_Width = 53;
-	m_Height = 51;
+	//Megaman is 48 x 48
+	m_Width = 48;
+	m_Height = 48;
 
-	m_object = m_prenderer->CreateMesh();
-	m_object->SetSprite("Assets/PlayerR.bmp");
+	//Set the player sprite to the default sprite
+	m_object->SetSprite("Assets/PlayerIdle1.bmp");
 
 }
 

@@ -8,11 +8,11 @@
 namespace NSRenderer
 {
 
-	class Mesh 
+	class Sprite 
 	{
 	public:
-		Mesh(SDL_Renderer* renderer);
-		~Mesh();
+		Sprite(SDL_Renderer* renderer);
+		~Sprite();
 
 		void SetSprite(std::string filename);
 
@@ -47,7 +47,7 @@ namespace NSRenderer
 
 		SDL_Renderer* GetRenderer();
 
-		Mesh* CreateMesh();
+		Sprite* CreateSprite();
 
 	private:
 

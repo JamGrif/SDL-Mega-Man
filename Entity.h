@@ -21,13 +21,11 @@ protected:
 	//Renderer
 	Renderer* m_prenderer;
 
-	Mesh* m_object;
+	Sprite* m_object;
 
 	struct Vector { int x; int y; };
 	//Vector Position = { 0,0 };
 	Vector Velocity{ 0, 0 };
-
-	int m_DrawX = 0;
 
 	//std::string Filename = "";
 

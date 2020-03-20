@@ -2,25 +2,25 @@
 
 namespace NSRenderer
 {
-	std::vector<Mesh*> meshes;
+	std::vector<Sprite*> sprites;
 
-	Mesh* Renderer::CreateMesh()
+	Sprite* Renderer::CreateSprite()
 	{
-		Mesh* mesh = new Mesh(m_Renderer);
-		meshes.push_back(mesh);
-		return mesh;
+		Sprite* sprite = new Sprite(m_Renderer);
+		sprites.push_back(sprite);
+		return sprite;
 		
 	}
 
-	Mesh::Mesh(SDL_Renderer* renderer)
+	Sprite::Sprite(SDL_Renderer* renderer)
 	{
 		m_pRenderer = renderer;
-		//Position.x = x;
-		//Position.y = y;
+
+		SetSprite("Assets/MissingPic.bmp");
 
 	}
 
-	void Mesh::SetSprite(std::string filename)
+	void Sprite::SetSprite(std::string filename)
 	{
 		SDL_FreeSurface(m_pbitmapSurface);
 		SDL_DestroyTexture(m_pbitmapTexture);
@@ -43,7 +43,6 @@ namespace NSRenderer
 			Uint32 colourKey = SDL_MapRGB(m_pbitmapSurface->format, 255, 0, 255);
 			SDL_SetColorKey(m_pbitmapSurface, SDL_TRUE, colourKey);
 
-
 			//create the texture
 			m_pbitmapTexture = SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface); //Converting raw pixels to something more efficient. Copies pixel data from one memory location to another
 			if (!m_pbitmapTexture)
@@ -55,7 +54,7 @@ namespace NSRenderer
 		}
 	}
 
-	void Mesh::Draw(SDL_Renderer* renderer)
+	void Sprite::Draw(SDL_Renderer* renderer)
 	{
 		if (m_pbitmapTexture)
 		{
@@ -64,22 +63,22 @@ namespace NSRenderer
 		}
 	}
 
-	void Mesh::SetX(float x)
+	void Sprite::SetX(float x)
 	{
 		Position.x = x;
 	}
 
-	void Mesh::SetY(float y)
+	void Sprite::SetY(float y)
 	{
 		Position.y = y;
 	}
 
-	float Mesh::GetX()
+	float Sprite::GetX()
 	{
 		return Position.x;
 	}
 
-	float Mesh::GetY()
+	float Sprite::GetY()
 	{
 		return Position.y;
 	}
@@ -95,7 +94,7 @@ namespace NSRenderer
 
 		//Create the window
 		//Title, initial x position, initial y position, width in pixels, height in pixels, window behaviour flags
-		m_Window = SDL_CreateWindow("Super Minecraft Bros", 200, 200, screenwidth, screenheight, 0);
+		m_Window = SDL_CreateWindow("Mega Man", 200, 200, screenwidth, screenheight, 0);
 
 		if (!m_Window)
 		{
@@ -118,17 +117,19 @@ namespace NSRenderer
 		}
 
 		//Application icon
-		//m_IconSurface = SDL_LoadBMP(Icon.c_str());
-		//SDL_SetWindowIcon(m_Window, m_IconSurface);
+		std::string Icon = "Assets/Icon.bmp";
+		SDL_Surface* m_IconSurface = SDL_LoadBMP(Icon.c_str());
+		SDL_SetWindowIcon(m_Window, m_IconSurface);
+		SDL_FreeSurface(m_IconSurface);
 
 	}
 
 	void Renderer::RenderLoop()
 	{
 		//Loop through meshes drawing them all
-		for (Mesh* mesh : meshes) 
+		for (Sprite* sprite : sprites)
 		{
-			mesh->Draw(m_Renderer);
+			sprite->Draw(m_Renderer);
 		}
 
 		//Show what was drawn
