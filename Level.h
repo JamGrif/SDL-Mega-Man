@@ -6,11 +6,13 @@
 #include "SDL.h"
 #include "SDL_render.h"
 
+#include "Renderer.h"
+
 
 class Level
 {
 public:
-	Level(SDL_Renderer* renderer, int ScreenWidth, int ScreenHeight);
+	Level(Renderer* renderer, int ScreenWidth, int ScreenHeight);
 	~Level();
 
 	void LoadLevel();
@@ -67,9 +69,11 @@ private:
 	int m_ScreenWidth, m_ScreenHeight;
 
 	//SDL stuff
-	SDL_Renderer* m_pRenderer;
 	SDL_Texture* m_pbitmap;
 	SDL_Surface* m_psurface;
+
+	//Renderer
+	Renderer* m_prenderer;
 
 	//Blocks to draw
 	std::string GrassBlock = "Assets/GrassBlock.bmp";

@@ -13,6 +13,7 @@
 #include "Sky.h"
 #include "Level.h"
 #include "Coin.h"
+#include "Renderer.h"
 
 
 class Game
@@ -35,8 +36,8 @@ private:
 	int m_ScreenWidth = 1280;
 	int m_ScreenHeight = 720;
 
-	SDL_Window* m_Window;
-	SDL_Renderer* m_Renderer;
+	//SDL_Window* m_Window;
+	//SDL_Renderer* m_Renderer;
 
 	//Game objects in the scene
 	Player* m_Player; 
@@ -65,7 +66,8 @@ private:
 	std::list<Coin*> ListOfCoins;
 	std::list<Goomba*> ListOfGoombas;
 
-
+	//Renderer
+	Renderer* RendererObj;
 
 };
 

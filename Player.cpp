@@ -1,11 +1,11 @@
 #include "Player.h"
 
-Player::Player(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency)
+Player::Player(Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency)
 	:Creature(renderer, xpos, ypos, pLevel, useTransparency)
 {
 	//player is 64 pixels wide and 128 pixels tall
 	CurrentPicture = PlayerR;
-	UpdateBitmap(CurrentPicture, true);
+	//UpdateBitmap(CurrentPicture, true);
 
 	m_Acceleration = 4;
 
@@ -16,9 +16,11 @@ Player::Player(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool u
 	m_Width = 53;
 	m_Height = 51;
 
+	m_object = m_prenderer->CreateMesh();
+	m_object->SetSprite("Assets/PlayerR.bmp");
+
 	//Saving the running sprites into the approiate vectors
-
-	PlayerRunL.push_back("Assets/PlayerRun1L.bmp");
+	/*PlayerRunL.push_back("Assets/PlayerRun1L.bmp");
 	PlayerRunL.push_back("Assets/PlayerRun1L.bmp");
 	PlayerRunL.push_back("Assets/PlayerRun1L.bmp");
 	PlayerRunL.push_back("Assets/PlayerRun2L.bmp");
@@ -42,7 +44,7 @@ Player::Player(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool u
 	PlayerRunR.push_back("Assets/PlayerRun1R.bmp");
 	PlayerRunR.push_back("Assets/PlayerRun3R.bmp");
 	PlayerRunR.push_back("Assets/PlayerRun3R.bmp");
-	PlayerRunR.push_back("Assets/PlayerRun3R.bmp");
+	PlayerRunR.push_back("Assets/PlayerRun3R.bmp");*/
 }
 
 

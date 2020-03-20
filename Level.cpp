@@ -1,9 +1,9 @@
 #include "Level.h"
 
-Level::Level(SDL_Renderer* renderer, int ScreenWidth, int ScreenHeight)
+Level::Level(Renderer* renderer, int ScreenWidth, int ScreenHeight)
 {
 	//Screen resoultion fits a width of 20 blocks and a height of 12 blocks
-	m_pRenderer = renderer;
+	m_prenderer = renderer;
 	m_ScreenWidth = ScreenWidth;
 	m_ScreenHeight = ScreenHeight;
 

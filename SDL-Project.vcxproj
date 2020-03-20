@@ -159,6 +159,7 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sky.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
@@ -171,6 +172,7 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
     <ClInclude Include="Level.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sky.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>

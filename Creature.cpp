@@ -1,6 +1,6 @@
 #include "Creature.h"
 
-Creature::Creature(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency)
+Creature::Creature(Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency)
 	:Entity(renderer, xpos, ypos, pLevel, useTransparency)
 
 {

@@ -5,11 +5,13 @@
 #include <iostream>
 #include <vector>
 #include "Level.h"
+#include "Renderer.h"
+using namespace NSRenderer;
 
 class Entity
 {
 public:
-	Entity(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency = true);
+	Entity(Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency = true);
 	~Entity();
 
 	void UpdateBitmap(std::string filename, bool useTransparency); //Changes the loaded texture to something else
@@ -24,9 +26,13 @@ public:
 	
 
 protected:
-	SDL_Surface* m_pbitmapSurface;
-	SDL_Texture* m_pbitmapTexture;
-	SDL_Renderer* m_pRenderer;
+	//SDL_Surface* m_pbitmapSurface;
+	//SDL_Texture* m_pbitmapTexture;
+	
+	//Renderer
+	Renderer* m_prenderer;
+
+	Mesh* m_object;
 
 	struct Vector { int x; int y; };
 	Vector Position = { 0,0 };

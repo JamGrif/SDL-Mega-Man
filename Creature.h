@@ -5,7 +5,7 @@ class Creature :
 	public Entity
 {
 public:
-	Creature(SDL_Renderer* renderer, int xpos, int ypos, Level* plevel, bool useTransparency);
+	Creature(Renderer* renderer, int xpos, int ypos, Level* plevel, bool useTransparency);
 
 	void DisplayPosition();
 
