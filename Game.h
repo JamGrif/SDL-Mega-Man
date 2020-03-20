@@ -56,9 +56,6 @@ private:
 
 	//Sky* m_Sky;
 
-	std::string Icon = "Assets/Icon.bmp";
-	SDL_Surface* m_IconSurface;
-
 	UI* m_ui;
 	
 	Input* input = new Input();

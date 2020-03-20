@@ -4,5 +4,3 @@ C:\Users\jamie\Desktop\SDL-MegaMan\Debug\SDL-Project.exe
 C:\Users\jamie\Desktop\SDL-MegaMan\Debug\SDL-Project.pdb
 C:\Users\jamie\Desktop\SDL-Mega-Man\Debug\SDL-Project.exe
 C:\Users\jamie\Desktop\SDL-Mega-Man\Debug\SDL-Project.pdb
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Project.exe
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Project.pdb
