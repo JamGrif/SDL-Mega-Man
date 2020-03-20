@@ -1,4 +1,4 @@
-#include "Sky.h"
+/*#include "Sky.h"
 
 
 Sky::Sky(SDL_Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency)
@@ -24,3 +24,4 @@ void Sky::draw()
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}
 }
+*/

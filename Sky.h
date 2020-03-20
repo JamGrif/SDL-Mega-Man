@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "Entity.h"
 class Sky :
 	public Entity
@@ -15,4 +15,4 @@ private:
 
 
 };
-
+*/

@@ -9,10 +9,10 @@
 #include "Input.h"
 #include "UI.h"
 #include "Player.h"
-#include "Goomba.h"
-#include "Sky.h"
+//#include "Goomba.h"
+//#include "Sky.h"
 #include "Level.h"
-#include "Coin.h"
+//#include "Coin.h"
 #include "Renderer.h"
 
 
@@ -42,19 +42,19 @@ private:
 	//Game objects in the scene
 	Player* m_Player; 
 
-	Level* level;
+	//Level* level;
 
-	Coin* m_Coin1;
-	Coin* m_Coin2;
-	Coin* m_Coin3;
-	Coin* m_Coin4;
-	Coin* m_Coin5;
+	//Coin* m_Coin1;
+	//Coin* m_Coin2;
+	//Coin* m_Coin3;
+	//Coin* m_Coin4;
+	//Coin* m_Coin5;
 
-	Goomba* m_Goomba1;
-	Goomba* m_Goomba2;
-	Goomba* m_Goomba3;
+	//Goomba* m_Goomba1;
+	//Goomba* m_Goomba2;
+	//Goomba* m_Goomba3;
 
-	Sky* m_Sky;
+	//Sky* m_Sky;
 
 	std::string Icon = "Assets/Icon.bmp";
 	SDL_Surface* m_IconSurface;
@@ -63,8 +63,8 @@ private:
 	
 	Input* input = new Input();
 
-	std::list<Coin*> ListOfCoins;
-	std::list<Goomba*> ListOfGoombas;
+	//std::list<Coin*> ListOfCoins;
+	//std::list<Goomba*> ListOfGoombas;
 
 	//Renderer
 	Renderer* RendererObj;

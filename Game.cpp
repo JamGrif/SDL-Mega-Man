@@ -2,7 +2,6 @@
 
 Game::Game()
 {
-	
 
 	//Create renderer
 	RendererObj = new Renderer(m_ScreenWidth, m_ScreenHeight);
@@ -60,7 +59,7 @@ Game::~Game()
 void Game::GameLoop()
 {
 
-	while (m_Player->HasPlayerWon() == false) //Game ends if player collects 5 coins and reaches end flag
+	while (true) //Game ends if player collects 5 coins and reaches end flag
 	{
 		//Check for input
 		CheckKeyPressed();
@@ -72,7 +71,7 @@ void Game::GameLoop()
 		
 		//level->RenderLevel(m_Player->GetX(),m_Player->GetY());
 
-		m_Player->draw();
+		//m_Player->draw();
 
 		//Loop through coins updating and drawing them
 		/*for (Coin* coin : ListOfCoins)
@@ -150,8 +149,7 @@ void Game::CheckKeyPressed()
 	}
 	if (input->KeyIsPressed(KEY_R)) 
 	{
-		//std::cout << "R key is pressed!" << std::endl;
-		m_Player->DisplayPosition();
+
 	}
 	if (input->KeyIsPressed(KEY_1))
 	{

@@ -1,30 +1,6 @@
-﻿  Coin.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Coin.cpp(4,9): error C2664: 'Entity::Entity(const Entity &)': cannot convert argument 1 from 'SDL_Renderer *' to 'Renderer *'
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Coin.cpp(4,10): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Entity.h(13,2): message : see declaration of 'Entity::Entity'
-  Creature.cpp
-  Entity.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Entity.cpp(54,51): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Entity.cpp(73,18): error C2065: 'm_pRenderer': undeclared identifier
-  Game.cpp
-  Level.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(150,48): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(155,47): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(160,48): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(165,54): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(170,47): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(175,51): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(180,52): error C2065: 'm_pRenderer': undeclared identifier
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(338,17): error C2065: 'm_pRenderer': undeclared identifier
-  main.cpp
-  Goomba.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Goomba.cpp(4,11): error C2664: 'Creature::Creature(Creature &&)': cannot convert argument 1 from 'SDL_Renderer *' to 'Renderer *'
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Goomba.cpp(4,12): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Creature.h(8,2): message : see declaration of 'Creature::Creature'
-  Player.cpp
-  Sky.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Sky.cpp(5,9): error C2664: 'Entity::Entity(const Entity &)': cannot convert argument 1 from 'SDL_Renderer *' to 'Renderer *'
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Sky.cpp(5,10): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Entity.h(13,2): message : see declaration of 'Entity::Entity'
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Sky.cpp(24,18): error C2065: 'm_pRenderer': undeclared identifier
-  Generating Code...
+﻿  Player.cpp
+  SDL-Project.vcxproj -> C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Project.exe
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.

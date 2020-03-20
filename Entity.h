@@ -11,23 +11,12 @@ using namespace NSRenderer;
 class Entity
 {
 public:
-	Entity(Renderer* renderer, int xpos, int ypos, Level* pLevel, bool useTransparency = true);
+	Entity(Renderer* renderer, int xpos, int ypos);
 	~Entity();
 
-	void UpdateBitmap(std::string filename, bool useTransparency); //Changes the loaded texture to something else
-	virtual void draw(); //Draws the bitmap on screen
-
-	void GetCollisionPosition(); //Gets the world position of all 4 corners of the object
-
-	int GetX(); //Returns X position
-	int GetY(); //Returns Y position
-
 	virtual void Update() = 0;
-	
 
 protected:
-	//SDL_Surface* m_pbitmapSurface;
-	//SDL_Texture* m_pbitmapTexture;
 	
 	//Renderer
 	Renderer* m_prenderer;
@@ -35,16 +24,16 @@ protected:
 	Mesh* m_object;
 
 	struct Vector { int x; int y; };
-	Vector Position = { 0,0 };
+	//Vector Position = { 0,0 };
 	Vector Velocity{ 0, 0 };
 
 	int m_DrawX = 0;
 
-	std::string Filename = "";
+	//std::string Filename = "";
 
-	std::string CurrentPicture = "";
+	//std::string CurrentPicture = "";
 
-	Level* levelinfo;
+	//Level* levelinfo;
 
 	int TopLeftPosX = 0;
 	int TopLeftPosY = 0;

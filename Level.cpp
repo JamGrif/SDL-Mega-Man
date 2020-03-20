@@ -1,4 +1,4 @@
-#include "Level.h"
+/*#include "Level.h"
 
 Level::Level(Renderer* renderer, int ScreenWidth, int ScreenHeight)
 {
@@ -409,5 +409,5 @@ int Level::GetViewPortX()
 	return ViewPortX;
 }
 
-
+*/
 

@@ -2,7 +2,87 @@
 
 namespace NSRenderer
 {
+	std::vector<Mesh*> meshes;
 
+	Mesh* Renderer::CreateMesh()
+	{
+		Mesh* mesh = new Mesh(m_Renderer);
+		meshes.push_back(mesh);
+		return mesh;
+		
+	}
+
+	Mesh::Mesh(SDL_Renderer* renderer)
+	{
+		m_pRenderer = renderer;
+		//Position.x = x;
+		//Position.y = y;
+
+	}
+
+	void Mesh::SetSprite(std::string filename)
+	{
+		SDL_FreeSurface(m_pbitmapSurface);
+		SDL_DestroyTexture(m_pbitmapTexture);
+
+		//Create the bitmap surface
+		m_pbitmapSurface = SDL_LoadBMP(filename.c_str()); //loads bitmap from file into a member variable
+
+		//CurrentPicture = filename;
+
+		if (!m_pbitmapSurface)
+		{
+			//bitmap failed to load
+			printf("Surface for bitmap '%s' not loaded! \n", filename.c_str());
+			printf("%s\n", SDL_GetError());
+		}
+		else
+		{
+			//if we are to use transparency, going to assume
+			//the colour key is magenta
+			Uint32 colourKey = SDL_MapRGB(m_pbitmapSurface->format, 255, 0, 255);
+			SDL_SetColorKey(m_pbitmapSurface, SDL_TRUE, colourKey);
+
+
+			//create the texture
+			m_pbitmapTexture = SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface); //Converting raw pixels to something more efficient. Copies pixel data from one memory location to another
+			if (!m_pbitmapTexture)
+			{
+				//texture failed to load
+				printf("Texture for bitmap '%s' not loaded! a\n", filename.c_str());
+				printf("%s\n", SDL_GetError());
+			}
+		}
+	}
+
+	void Mesh::Draw(SDL_Renderer* renderer)
+	{
+		if (m_pbitmapTexture)
+		{
+			SDL_Rect destRect = { Position.x, Position.y, m_pbitmapSurface->w, m_pbitmapSurface->h }; //Where on screen bitmap is drawn to and how big it will appear
+			SDL_RenderCopy(renderer, m_pbitmapTexture, NULL, &destRect);
+		}
+	}
+
+	void Mesh::SetX(float x)
+	{
+		Position.x = x;
+	}
+
+	void Mesh::SetY(float y)
+	{
+		Position.y = y;
+	}
+
+	float Mesh::GetX()
+	{
+		return Position.x;
+	}
+
+	float Mesh::GetY()
+	{
+		return Position.y;
+	}
 
 	Renderer::Renderer(int screenwidth, int screenheight)
 	{
@@ -45,60 +125,27 @@ namespace NSRenderer
 
 	void Renderer::RenderLoop()
 	{
-		//show what was drawn
+		//Loop through meshes drawing them all
+		for (Mesh* mesh : meshes) 
+		{
+			mesh->Draw(m_Renderer);
+		}
+
+		//Show what was drawn
 		SDL_RenderPresent(m_Renderer);
 
-		//wipe the display 
+		//Wipe the display 
 		SDL_RenderClear(m_Renderer);
 
 	}
 
-	static std::vector<Mesh*> meshes;
-
-	Mesh* Renderer::CreateMesh()
+	SDL_Renderer* Renderer::GetRenderer()
 	{
-		Mesh* mesh = new Mesh();
-		meshes.push_back(mesh);
-		return mesh;
-
+		return m_Renderer;
 	}
 
-	void Mesh::SetSprite(std::string filename)
-	{
-		SDL_FreeSurface(m_pbitmapSurface);
-		SDL_DestroyTexture(m_pbitmapTexture);
+	
 
-		//Create the bitmap surface
-		m_pbitmapSurface = SDL_LoadBMP(filename.c_str()); //loads bitmap from file into a member variable
-
-		//CurrentPicture = filename;
-
-		if (!m_pbitmapSurface)
-		{
-			//bitmap failed to load
-			printf("Surface for bitmap '%s' not loaded! \n", filename.c_str());
-			printf("%s\n", SDL_GetError());
-		}
-		else
-		{
-			//if we are to use transparency, going to assume
-			//the colour key is magenta
-			
-			Uint32 colourKey = SDL_MapRGB(m_pbitmapSurface->format, 255, 0, 255);
-			SDL_SetColorKey(m_pbitmapSurface, SDL_TRUE, colourKey);
-			
-
-			//create the texture
-			m_pbitmapTexture = SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface); //Converting raw pixels to something more efficient. Copies pixel data from one memory location to another
-			if (!m_pbitmapTexture)
-			{
-				//texture failed to load
-				printf("Texture for bitmap '%s' not loaded! a\n", filename.c_str());
-				printf("%s\n", SDL_GetError());
-			}
-		}
-
-
-	}
+	
 
 }
