@@ -5,7 +5,7 @@ class Creature :
 	public Entity
 {
 public:
-	Creature(Renderer* renderer, int xpos, int ypos);
+	Creature(Renderer* renderer);
 
 
 protected:

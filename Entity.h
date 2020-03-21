@@ -11,7 +11,7 @@ using namespace NSRenderer;
 class Entity
 {
 public:
-	Entity(Renderer* renderer, int xpos, int ypos);
+	Entity(Renderer* renderer);
 	~Entity();
 
 	virtual void Update() = 0;

@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(Renderer* renderer, int xpos, int ypos)
+Entity::Entity(Renderer* renderer)
 {
 	//Store the renderer for future configuring and drawing
 	m_prenderer = renderer;

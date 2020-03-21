@@ -14,6 +14,7 @@
 #include "Level.h"
 //#include "Coin.h"
 #include "Renderer.h"
+#include "Camera.h"
 
 
 class Game
@@ -40,9 +41,9 @@ private:
 	//SDL_Renderer* m_Renderer;
 
 	//Game objects in the scene
-	Player* m_Player; 
+	Player* PlayerObj;
 
-	//Level* level;
+	Level* LevelObj;
 
 	//Coin* m_Coin1;
 	//Coin* m_Coin2;
@@ -62,6 +63,9 @@ private:
 
 	//std::list<Coin*> ListOfCoins;
 	//std::list<Goomba*> ListOfGoombas;
+
+	//Camera
+	Camera* CameraObj;
 
 	//Renderer
 	Renderer* RendererObj;

@@ -1,11 +1,11 @@
 #pragma once
 #include "Creature.h"
-
+#include "Camera.h"
 class Player :
 	public Creature
 {
 public:
-	Player(Renderer* renderer, int xpos, int ypos);
+	Player(Camera* camera, Renderer* renderer);
 	~Player();
 
 	void Move(char direction);
@@ -14,9 +14,9 @@ public:
 
 private:
 
+	Camera* m_pcamera;
+
 	int speed = 5;
-
-
 
 };
 

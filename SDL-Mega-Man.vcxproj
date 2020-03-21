@@ -156,6 +156,7 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelBlock.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -169,6 +170,7 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelBlock.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sky.h" />

@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include "SDL_ttf.h"
 
+#include "Camera.h"
+
 #include <vector>
 #include <iostream>
 
@@ -16,7 +18,7 @@ namespace NSRenderer
 
 		void SetSprite(std::string filename);
 
-		void Draw(SDL_Renderer* renderer);
+		void Draw(SDL_Renderer* renderer, float CameraX, float CameraY);
 
 		void SetX(float x);
 		void SetY(float y);
@@ -40,7 +42,7 @@ namespace NSRenderer
 	class Renderer
 	{
 	public:
-		Renderer(int screenwidth, int screenheight);
+		Renderer(Camera* camera);
 		~Renderer();
 
 		void RenderLoop();
@@ -50,6 +52,8 @@ namespace NSRenderer
 		Sprite* CreateSprite();
 
 	private:
+
+		Camera* m_pcamera;
 
 		SDL_Renderer* m_Renderer;
 		SDL_Window* m_Window;

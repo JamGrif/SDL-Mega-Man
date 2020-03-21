@@ -1,14 +1,18 @@
 #include "Player.h"
 
-Player::Player(Renderer* renderer, int xpos, int ypos)
-	:Creature(renderer, xpos, ypos)
+Player::Player(Camera* camera, Renderer* renderer)
+	:Creature(renderer)
 {
+
+	m_pcamera = camera;
+
 	//Megaman is 48 x 48
 	m_Width = 48;
 	m_Height = 48;
 
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
+
 
 }
 
@@ -22,11 +26,11 @@ void Player::Move(char Direction)
 {
 	if (Direction == 'u') //Up
 	{
-		
+		m_object->SetY(m_object->GetY() - speed);
 	}
 	else if (Direction == 'd') //Down
 	{
-		
+		m_object->SetY(m_object->GetY() + speed);
 	}
 	else if (Direction == 'l') //Left
 	{
@@ -40,8 +44,11 @@ void Player::Move(char Direction)
 
 void Player::Update()
 {
-	std::cout << m_object->GetX() << std::endl;
-	std::cout << m_object->GetY() << std::endl;
+	//Centers the camera on the player
+	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
+
+	std::cout << "X is " << m_object->GetX() << std::endl;
+	std::cout << "Y is " << m_object->GetY() << std::endl;
 
 }
 

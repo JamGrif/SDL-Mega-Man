@@ -54,11 +54,11 @@ namespace NSRenderer
 		}
 	}
 
-	void Sprite::Draw(SDL_Renderer* renderer)
+	void Sprite::Draw(SDL_Renderer* renderer, float CameraX, float CameraY)
 	{
 		if (m_pbitmapTexture)
 		{
-			SDL_Rect destRect = { Position.x, Position.y, m_pbitmapSurface->w, m_pbitmapSurface->h }; //Where on screen bitmap is drawn to and how big it will appear
+			SDL_Rect destRect = { Position.x - CameraX, Position.y - CameraY, m_pbitmapSurface->w, m_pbitmapSurface->h }; //Where on screen bitmap is drawn to and how big it will appear
 			SDL_RenderCopy(renderer, m_pbitmapTexture, NULL, &destRect);
 		}
 	}
@@ -83,8 +83,10 @@ namespace NSRenderer
 		return Position.y;
 	}
 
-	Renderer::Renderer(int screenwidth, int screenheight)
+	Renderer::Renderer(Camera* camera)
 	{
+		m_pcamera = camera;
+
 		m_Window = nullptr;
 		m_Renderer = nullptr;
 
@@ -94,7 +96,7 @@ namespace NSRenderer
 
 		//Create the window
 		//Title, initial x position, initial y position, width in pixels, height in pixels, window behaviour flags
-		m_Window = SDL_CreateWindow("Mega Man", 200, 200, screenwidth, screenheight, 0);
+		m_Window = SDL_CreateWindow("Mega Man", 200, 200, m_pcamera->GetScreenWidth(), m_pcamera->GetScreenHeight(), 0);
 
 		if (!m_Window)
 		{
@@ -126,10 +128,13 @@ namespace NSRenderer
 
 	void Renderer::RenderLoop()
 	{
+		float x = m_pcamera->GetCameraOffX();
+		float y = m_pcamera->GetCameraOffY();
+
 		//Loop through meshes drawing them all
 		for (Sprite* sprite : sprites)
 		{
-			sprite->Draw(m_Renderer);
+			sprite->Draw(m_Renderer, x, y);
 		}
 
 		//Show what was drawn

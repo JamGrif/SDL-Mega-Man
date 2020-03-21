@@ -2,14 +2,18 @@
 
 Game::Game()
 {
+	//Create the camera
+	CameraObj = new Camera(m_ScreenWidth, m_ScreenHeight);
 
 	//Create renderer
-	RendererObj = new Renderer(m_ScreenWidth, m_ScreenHeight);
+	RendererObj = new Renderer(CameraObj);
 
 	//Creates the game objects
 	//level = new Level(RendererObj, m_ScreenHeight, m_ScreenWidth);
 
-	m_Player = new Player(RendererObj, m_ScreenWidth/2, m_ScreenHeight/2-128);
+	PlayerObj = new Player(CameraObj, RendererObj);
+
+	//LevelObj = new Level(RendererObj);
 
 	//m_Sky = new Sky(m_Renderer, 0, 0, level);
 
@@ -35,9 +39,9 @@ Game::Game()
 Game::~Game()
 {
 	//Destroy created bitmaps
-	if (m_Player)
+	if (PlayerObj)
 	{
-		delete m_Player;
+		delete PlayerObj;
 	}
 
 	//delete level;
@@ -58,18 +62,19 @@ Game::~Game()
 
 void Game::GameLoop()
 {
-
+	//level rendered once here -------------
 	while (true) //Game ends if player collects 5 coins and reaches end flag
 	{
 		//Check for input
 		CheckKeyPressed();
 
-		m_Player->Update();
+		PlayerObj->Update();
+
+		
 
 		//Drawing stuff
 		//m_Sky->draw();
-		
-		//level->RenderLevel(m_Player->GetX(),m_Player->GetY());
+	
 
 		//m_Player->draw();
 
@@ -99,12 +104,13 @@ void Game::GameLoop()
 		//m_ui->PresentUi(m_Player->GetCoinsCollected());
 		
 		//Render stuff
+		//CameraObj->CenterCamera();
 		RendererObj->RenderLoop();
 		SDL_Delay(20);
 
 	}
 
-	std::cout << "Game ended, player won!" << std::endl;
+	std::cout << "Game ended" << std::endl;
 	delete input;
 	//delete m_ui;
 	input = nullptr;
@@ -128,23 +134,23 @@ void Game::CheckKeyPressed()
 	//Keyboard
 	if (input->KeyIsPressed(KEY_D))
 	{
-		m_Player->Move('r');
+		PlayerObj->Move('r');
 	}
 	if (input->KeyIsPressed(KEY_A))
 	{
-		m_Player->Move('l');
+		PlayerObj->Move('l');
 	}
 	if (input->KeyIsPressed(KEY_W)) 
 	{
-		m_Player->Move('u');
+		PlayerObj->Move('u');
 	}
 	if (input->KeyIsPressed(KEY_S))
 	{
-		m_Player->Move('d');
+		PlayerObj->Move('d');
 	}
 	if (input->KeyIsPressed(KEY_SPACE))
 	{
-		m_Player->Move('j');
+		PlayerObj->Move('j');
 		//std::cout << "Space key is pressed!" << std::endl;
 	}
 	if (input->KeyIsPressed(KEY_R)) 
