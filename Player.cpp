@@ -22,8 +22,9 @@ Player::~Player()
 
 }
 
-void Player::Move(char Direction)
+static void Player::Move(char Direction)
 {
+	/*
 	if (Direction == 'u') //Up
 	{
 		m_object->SetY(m_object->GetY() - speed);
@@ -40,6 +41,7 @@ void Player::Move(char Direction)
 	{
 		m_object->SetX(m_object->GetX() + speed);
 	}
+	*/
 }
 
 void Player::Update()
@@ -47,8 +49,8 @@ void Player::Update()
 	//Centers the camera on the player
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
 
-	std::cout << "X is " << m_object->GetX() << std::endl;
-	std::cout << "Y is " << m_object->GetY() << std::endl;
+	//std::cout << "X is " << m_object->GetX() << std::endl;
+	//std::cout << "Y is " << m_object->GetY() << std::endl;
 
 }
 

@@ -42,9 +42,9 @@ private:
 
 	//Variables used to draw the level 
 	int SavedXDrawTo = 0;
-	int m_XDrawTo = 0;
-	int m_YDrawTo = 0;
-	int m_DrawingPosition;
+	float m_XDrawTo = 0;
+	float m_YDrawTo = 0;
+	int m_DrawingPosition = 0;
 
 
 	//Currently loaded level in the vector
@@ -68,8 +68,8 @@ private:
 	std::vector<std::string> LevelVector;
 
 	//Level blocks
-	//std::list<LevelBlock*> ListOfBlocks;
 	LevelBlock* levelblock;
+	std::list<LevelBlock*> ListOfBlocks;
 
 	//Loading level into vector
 	std::string ThingToAdd = "";

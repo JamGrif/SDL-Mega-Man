@@ -126,6 +126,10 @@ namespace NSRenderer
 
 	}
 
+	Renderer::~Renderer()
+	{
+	}
+
 	void Renderer::RenderLoop()
 	{
 		float x = m_pcamera->GetCameraOffX();

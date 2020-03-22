@@ -8,45 +8,57 @@ Game::Game()
 	//Create renderer
 	RendererObj = new Renderer(CameraObj);
 
-	//Creates the game objects
-	//level = new Level(RendererObj, m_ScreenHeight, m_ScreenWidth);
+	//Create input manager
+	InputObj = new Input();
 
-	PlayerObj = new Player(CameraObj, RendererObj);
-
-	//LevelObj = new Level(RendererObj);
-
-	//m_Sky = new Sky(m_Renderer, 0, 0, level);
-
+	//Create UI
 	//m_ui = new UI(m_Renderer);
 
-	//m_Goomba1 = new Goomba(m_Renderer, 2691, 528, level, m_Player);
-	//m_Goomba2 = new Goomba(m_Renderer, 2020, 592, level, m_Player);
-	//m_Goomba3 = new Goomba(m_Renderer, 3300, 528, level, m_Player);
+	//Create level manager
+	LevelObj = new Level(RendererObj);
 
-
-	/*ListOfCoins.push_back(m_Coin1 = new Coin(m_Renderer, 1800, 525, level, m_Player));
-	ListOfCoins.push_back(m_Coin2 = new Coin(m_Renderer, 625, 525, level, m_Player));
-	ListOfCoins.push_back(m_Coin3 = new Coin(m_Renderer, 2410, 450, level, m_Player));
-	ListOfCoins.push_back(m_Coin4 = new Coin(m_Renderer, 3190, 330, level, m_Player));
-	ListOfCoins.push_back(m_Coin5 = new Coin(m_Renderer, 4275, 390, level, m_Player));
-
-	ListOfGoombas.push_back(m_Goomba1 = new Goomba(m_Renderer, 2691, 528, level, m_Player));
-	ListOfGoombas.push_back(m_Goomba2 = new Goomba(m_Renderer, 2020, 592, level, m_Player));
-	ListOfGoombas.push_back(m_Goomba3 = new Goomba(m_Renderer, 3300, 528, level, m_Player));*/
+	//Create the game object
+	PlayerObj = new Player(CameraObj, RendererObj);
 
 }
 
 Game::~Game()
 {
-	//Destroy created bitmaps
 	if (PlayerObj)
 	{
 		delete PlayerObj;
+		PlayerObj = nullptr;
 	}
 
-	//delete level;
-	delete input;
-	//delete m_ui;
+	if (LevelObj)
+	{
+		delete LevelObj;
+		LevelObj = nullptr;
+	}
+
+	if (UIObj)
+	{
+		delete UIObj;
+		UIObj = nullptr;
+	}
+
+	if (InputObj)
+	{
+		delete InputObj;
+		InputObj = nullptr;
+	}
+
+	if (RendererObj)
+	{
+		delete RendererObj;
+		RendererObj = nullptr;
+	}
+
+	if (CameraObj)
+	{
+		delete CameraObj;
+		CameraObj = nullptr;
+	}
 
 	//Destroy in reverse order they were created
 	/*if (m_Renderer) 
@@ -63,6 +75,7 @@ Game::~Game()
 void Game::GameLoop()
 {
 	//level rendered once here -------------
+	LevelObj->RenderLevel();
 	while (true) //Game ends if player collects 5 coins and reaches end flag
 	{
 		//Check for input
@@ -111,68 +124,54 @@ void Game::GameLoop()
 	}
 
 	std::cout << "Game ended" << std::endl;
-	delete input;
-	//delete m_ui;
-	input = nullptr;
-	//m_ui = nullptr;
-}
-
-
-void Game::Render()
-{
-	//show what was drawn
-	//SDL_RenderPresent(m_Renderer);
-
-	//wipe the display 
-	//SDL_RenderClear(m_Renderer);
 
 }
 
 void Game::CheckKeyPressed()
 {
-	input->Update();
+	InputObj->Update();
 	//Keyboard
-	if (input->KeyIsPressed(KEY_D))
+	if (InputObj->KeyIsPressed(KEY_D))
 	{
 		PlayerObj->Move('r');
 	}
-	if (input->KeyIsPressed(KEY_A))
+	if (InputObj->KeyIsPressed(KEY_A))
 	{
 		PlayerObj->Move('l');
 	}
-	if (input->KeyIsPressed(KEY_W)) 
+	if (InputObj->KeyIsPressed(KEY_W))
 	{
 		PlayerObj->Move('u');
 	}
-	if (input->KeyIsPressed(KEY_S))
+	if (InputObj->KeyIsPressed(KEY_S))
 	{
 		PlayerObj->Move('d');
 	}
-	if (input->KeyIsPressed(KEY_SPACE))
+	if (InputObj->KeyIsPressed(KEY_SPACE))
 	{
 		PlayerObj->Move('j');
 		//std::cout << "Space key is pressed!" << std::endl;
 	}
-	if (input->KeyIsPressed(KEY_R)) 
+	if (InputObj->KeyIsPressed(KEY_R))
 	{
 
 	}
-	if (input->KeyIsPressed(KEY_1))
+	if (InputObj->KeyIsPressed(KEY_1))
 	{
 	}
-	if (input->KeyIsPressed(KEY_2))
+	if (InputObj->KeyIsPressed(KEY_2))
 	{
 	}
 	//Mouse
-	if (input->MouseIsPressed(MOUSE_LEFT)) 
+	if (InputObj->MouseIsPressed(MOUSE_LEFT))
 	{
-		std::cout << "Mouse X position is " << input->GetMouseX() << ". Mouse Y position is " << input->GetMouseY() << "." << std::endl;
+		std::cout << "Mouse X position is " << InputObj->GetMouseX() << ". Mouse Y position is " << InputObj->GetMouseY() << "." << std::endl;
 	}
-	if (input->MouseIsPressed(MOUSE_RIGHT))
+	if (InputObj->MouseIsPressed(MOUSE_RIGHT))
 	{
 		std::cout << "Right mouse is pressed!" << std::endl;
 	}
-	if (input->MouseIsPressed(MOUSE_MIDDLE))
+	if (InputObj->MouseIsPressed(MOUSE_MIDDLE))
 	{
 		std::cout << "Middle mouse is pressed!" << std::endl;
 	}

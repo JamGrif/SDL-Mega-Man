@@ -8,7 +8,7 @@ public:
 	Player(Camera* camera, Renderer* renderer);
 	~Player();
 
-	void Move(char direction);
+	static void Move(char direction);
 
 	void Update();
 

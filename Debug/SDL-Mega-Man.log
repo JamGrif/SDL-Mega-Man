@@ -1,40 +1,6 @@
-﻿  Camera.cpp
-  Creature.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(5,1): error C2504: 'Entity': base class undefined
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(7,73): error C2061: syntax error: identifier 'Renderer'
-  Entity.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(5,1): error C2504: 'Entity': base class undefined
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(7,73): error C2061: syntax error: identifier 'Renderer'
-  Game.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(5,1): error C2504: 'Entity': base class undefined
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(7,73): error C2061: syntax error: identifier 'Renderer'
-  Input.cpp
-  Level.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(112,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(112,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(116,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(116,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(120,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(120,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(124,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(124,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(128,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.cpp(128,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  LevelBlock.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.h(72,12): error C2143: syntax error: missing ';' before '*'
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.h(72,12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Level.h(72,24): error C2238: unexpected token(s) preceding ';'
-  main.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(5,1): error C2504: 'Entity': base class undefined
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(7,73): error C2061: syntax error: identifier 'Renderer'
-  Player.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(5,1): error C2504: 'Entity': base class undefined
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\LevelBlock.h(7,73): error C2061: syntax error: identifier 'Renderer'
-  Renderer.cpp
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Renderer.cpp(61,37): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Renderer.cpp(61,37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Renderer.cpp(61,59): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Renderer.cpp(61,59): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Sky.cpp
-  UI.cpp
-  Generating Code...
+﻿  LevelBlock.cpp
+  SDL-Mega-Man.vcxproj -> C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Mega-Man.exe
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.
+          1 file(s) copied.

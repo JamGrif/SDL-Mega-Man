@@ -25,11 +25,7 @@ public:
 
 	void GameLoop(); //Main game loop
 
-	void Render(); //Clears and displays the window
-
 	void CheckKeyPressed(); //Checks for keyboard / mouse input
-
-	
 
 private:
 
@@ -37,38 +33,24 @@ private:
 	int m_ScreenWidth = 1280;
 	int m_ScreenHeight = 720;
 
-	//SDL_Window* m_Window;
-	//SDL_Renderer* m_Renderer;
-
-	//Game objects in the scene
-	Player* PlayerObj;
-
-	Level* LevelObj;
-
-	//Coin* m_Coin1;
-	//Coin* m_Coin2;
-	//Coin* m_Coin3;
-	//Coin* m_Coin4;
-	//Coin* m_Coin5;
-
-	//Goomba* m_Goomba1;
-	//Goomba* m_Goomba2;
-	//Goomba* m_Goomba3;
-
-	//Sky* m_Sky;
-
-	UI* m_ui;
-	
-	Input* input = new Input();
-
-	//std::list<Coin*> ListOfCoins;
-	//std::list<Goomba*> ListOfGoombas;
-
 	//Camera
 	Camera* CameraObj;
 
 	//Renderer
 	Renderer* RendererObj;
+
+	//Input
+	Input* InputObj;
+
+	//UI
+	UI* UIObj;
+
+	//Level Manager
+	Level* LevelObj;
+
+	//Player
+	Player* PlayerObj;
+
 
 };
 

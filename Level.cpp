@@ -84,8 +84,8 @@ void Level::UnloadLevel()
 
 void Level::CreateBlock(float X, float Y, const char* AssetName)
 {
-	//ListOfBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName));
-	levelblock = new LevelBlock(m_prenderer, X, Y, AssetName);
+	std::cout << "adding to level list with x cord of " << X << " and y cord of " << Y << std::endl;
+	ListOfBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName));
 }
 
 /*void Level::DeleteBlocks()
@@ -137,7 +137,6 @@ void Level::RenderLevel()
 		}
 
 		//70 goes to the next block that needs to be renderered on the next line. will break if the rows are made bigger in level text file 
-
 		
 		m_XDrawTo = SavedXDrawTo;
 		m_YDrawTo += m_BlockHeight;
