@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
-	:Creature(renderer, LayerNum)
+	:Entity(renderer, LayerNum)
 {
 
 	m_pcamera = camera;
@@ -12,6 +12,9 @@ Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
 
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
+
+	m_object->SetX(200);
+	m_object->SetY(100);
 
 }
 

@@ -1,8 +1,8 @@
 #pragma once
-#include "Creature.h"
+#include "Entity.h"
 #include "Camera.h"
 class Player :
-	public Creature
+	public Entity
 {
 public:
 	Player(Camera* camera, Renderer* renderer, int LayerNum);

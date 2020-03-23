@@ -1,7 +1,7 @@
 #pragma once
-#include "Creature.h"
+#include "Entity.h"
 class BunbyHeli :
-	public Creature
+	public Entity
 {
 public:
 	BunbyHeli(Renderer* renderer, int LayerNum);

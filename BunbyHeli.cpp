@@ -1,7 +1,7 @@
 #include "BunbyHeli.h"
 
 BunbyHeli::BunbyHeli(Renderer* renderer, int LayerNum)
-	:Creature(renderer, LayerNum)
+	:Entity(renderer, LayerNum)
 {
 	m_object->SetSprite("Assets/BunbyHeli1.bmp");
 

@@ -152,7 +152,6 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
   <ItemGroup>
     <ClCompile Include="BunbyHeli.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -168,7 +167,6 @@ copy "$(SolutionDir)..\SDL-Mega-Man\SDL\lib\x86\zlib1.dll" "$(TargetDir)"
   <ItemGroup>
     <ClInclude Include="BunbyHeli.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Creature.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Game.h" />
