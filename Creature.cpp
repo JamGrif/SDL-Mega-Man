@@ -1,7 +1,7 @@
 #include "Creature.h"
 
-Creature::Creature(Renderer* renderer)
-	:Entity(renderer)
+Creature::Creature(Renderer* renderer, int LayerNum)
+	:Entity(renderer, LayerNum)
 {
 
 

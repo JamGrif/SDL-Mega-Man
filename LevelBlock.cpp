@@ -1,6 +1,6 @@
 #include "LevelBlock.h"
-LevelBlock::LevelBlock(Renderer* renderer, float x, float y, const char* AssetName)
-	:Entity(renderer)
+LevelBlock::LevelBlock(Renderer* renderer, float x, float y, const char* AssetName, int LayerNum)
+	:Entity(renderer, LayerNum)
 {
 
 	m_object->SetSprite(AssetName);

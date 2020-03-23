@@ -2,14 +2,40 @@
 
 namespace NSRenderer
 {
-	std::vector<Sprite*> sprites;
 
-	Sprite* Renderer::CreateSprite()
+	//Layers used for drawing order. Starts from top 
+	std::vector<Sprite*> SkyLayer;
+	std::vector<Sprite*> BackLayer;
+	std::vector<Sprite*> PlayLayer;
+	std::vector<Sprite*> FrontLayer;
+	std::vector<Sprite*> UILayer;
+
+
+	Sprite* Renderer::CreateSprite(int LayerNum)
 	{
 		Sprite* sprite = new Sprite(m_Renderer);
-		sprites.push_back(sprite);
+		switch (LayerNum) 
+		{
+		case SkyL:
+			SkyLayer.push_back(sprite);
+			break;
+		case BackL:
+			BackLayer.push_back(sprite);
+			break;
+		case PlayL:
+			PlayLayer.push_back(sprite);
+			break;
+		case FrontL:
+			FrontLayer.push_back(sprite);
+			break;
+		case UIL:
+			UILayer.push_back(sprite);
+			break;
+		default:
+			PlayLayer.push_back(sprite); //number outside 0-4 results in sprite being put into playlayer
+			break;
+		}
 		return sprite;
-		
 	}
 
 	Sprite::Sprite(SDL_Renderer* renderer)
@@ -121,6 +147,8 @@ namespace NSRenderer
 		//Application icon
 		std::string Icon = "Assets/Icon.bmp";
 		SDL_Surface* m_IconSurface = SDL_LoadBMP(Icon.c_str());
+		Uint32 colourKey = SDL_MapRGB(m_IconSurface->format, 255, 0, 255);
+		SDL_SetColorKey(m_IconSurface, SDL_TRUE, colourKey);
 		SDL_SetWindowIcon(m_Window, m_IconSurface);
 		SDL_FreeSurface(m_IconSurface);
 
@@ -128,6 +156,7 @@ namespace NSRenderer
 
 	Renderer::~Renderer()
 	{
+
 	}
 
 	void Renderer::RenderLoop()
@@ -135,8 +164,24 @@ namespace NSRenderer
 		float x = m_pcamera->GetCameraOffX();
 		float y = m_pcamera->GetCameraOffY();
 
-		//Loop through meshes drawing them all
-		for (Sprite* sprite : sprites)
+		//Loop through layers drawing all the sprites
+		for (Sprite* sprite : SkyLayer)
+		{
+			sprite->Draw(m_Renderer, x, y);
+		}
+		for (Sprite* sprite : BackLayer)
+		{
+			sprite->Draw(m_Renderer, x, y);
+		}
+		for (Sprite* sprite : PlayLayer)
+		{
+			sprite->Draw(m_Renderer, x, y);
+		}
+		for (Sprite* sprite : FrontLayer)
+		{
+			sprite->Draw(m_Renderer, x, y);
+		}
+		for (Sprite* sprite : UILayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
 		}
@@ -155,7 +200,4 @@ namespace NSRenderer
 	}
 
 	
-
-	
-
 }

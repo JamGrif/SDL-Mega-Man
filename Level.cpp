@@ -33,7 +33,7 @@ void Level::LoadLevel()
 	SaveLevelFromText.seekg(0) >> temp;
 	m_LevelWidth = temp.length();
 
-	m_LevelHeight = 12;
+	m_LevelHeight = 15;
 
 	ThingToAdd = "";
 	temp = "";
@@ -45,25 +45,41 @@ void Level::LoadLevel()
 		for (int i = 0; i < m_LevelWidth; i++)
 		{
 			SaveLevelFromText.seekg(ReadingPosition) >> ThingToAdd;
-			if (ThingToAdd.at(0) == 'G')
+			if (ThingToAdd.at(0) == '1')
 			{
-				LevelVector.push_back("G");
+				LevelVector.push_back("1");
 			}
-			else if (ThingToAdd.at(0) == 'D')
+			else if (ThingToAdd.at(0) == '2')
 			{
-				LevelVector.push_back("D");
+				LevelVector.push_back("2");
 			}
-			else if (ThingToAdd.at(0) == 'S')
+			else if (ThingToAdd.at(0) == '3')
 			{
-				LevelVector.push_back("S");
+				LevelVector.push_back("3");
 			}
-			else if (ThingToAdd.at(0) == 'P')
+			else if (ThingToAdd.at(0) == '4')
 			{
-				LevelVector.push_back("P");
+				LevelVector.push_back("4");
 			}
-			else if (ThingToAdd.at(0) == 'C')
+			else if (ThingToAdd.at(0) == '5')
 			{
-				LevelVector.push_back("C");
+				LevelVector.push_back("5");
+			}
+			else if (ThingToAdd.at(0) == '6')
+			{
+				LevelVector.push_back("6");
+			}
+			else if (ThingToAdd.at(0) == '7')
+			{
+				LevelVector.push_back("7");
+			}
+			else if (ThingToAdd.at(0) == '8')
+			{
+				LevelVector.push_back("8");
+			}
+			else if (ThingToAdd.at(0) == '9')
+			{
+				LevelVector.push_back("9");
 			}
 			else //If game isn't sure whats in text position or there is a "." in position then adds empty space
 			{
@@ -85,7 +101,7 @@ void Level::UnloadLevel()
 void Level::CreateBlock(float X, float Y, const char* AssetName)
 {
 	std::cout << "adding to level list with x cord of " << X << " and y cord of " << Y << std::endl;
-	ListOfBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName));
+	ListOfBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName, 2));
 }
 
 /*void Level::DeleteBlocks()
@@ -107,25 +123,41 @@ void Level::RenderLevel()
 	{
 		for (int j = 0; j < m_LevelWidth; j++)
 		{
-			if (LevelVector.at(m_DrawingPosition) == "G") //Grass block
+			if (LevelVector.at(m_DrawingPosition) == "1") //Grass block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/GrassBlock.bmp");
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "D") //Dirt block
+			else if (LevelVector.at(m_DrawingPosition) == "2") //Dirt block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/DirtBlock.bmp");
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "S") //Stone block
+			else if (LevelVector.at(m_DrawingPosition) == "3") //Stone block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/StoneBlock.bmp");
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "P") //Player spawn 
+			else if (LevelVector.at(m_DrawingPosition) == "4") //Player spawn 
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/PlayerSpawn.bmp");
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "C") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "5") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/CoalBlock.bmp");
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
+			}
+			else if (LevelVector.at(m_DrawingPosition) == "6") //Coal Block
+			{
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
+			}
+			else if (LevelVector.at(m_DrawingPosition) == "7") //Coal Block
+			{
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
+			}
+			else if (LevelVector.at(m_DrawingPosition) == "8") //Coal Block
+			{
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
+			}
+			else if (LevelVector.at(m_DrawingPosition) == "9") //Coal Block
+			{
+				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
 			}
 			else //Empty space
 			{

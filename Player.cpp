@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(Camera* camera, Renderer* renderer)
-	:Creature(renderer)
+Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
+	:Creature(renderer, LayerNum)
 {
 
 	m_pcamera = camera;
@@ -13,7 +13,6 @@ Player::Player(Camera* camera, Renderer* renderer)
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
 
-
 }
 
 
@@ -22,9 +21,9 @@ Player::~Player()
 
 }
 
-static void Player::Move(char Direction)
+void Player::Move(char Direction)
 {
-	/*
+	
 	if (Direction == 'u') //Up
 	{
 		m_object->SetY(m_object->GetY() - speed);
@@ -41,7 +40,7 @@ static void Player::Move(char Direction)
 	{
 		m_object->SetX(m_object->GetX() + speed);
 	}
-	*/
+	
 }
 
 void Player::Update()

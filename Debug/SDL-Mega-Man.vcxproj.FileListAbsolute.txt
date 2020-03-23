@@ -1,2 +1,0 @@
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Mega-Man.exe
-C:\Users\jamie\Desktop\Stuff\Uni\Year2\ConsoleDevelopment\SDL-Mega-Man\Debug\SDL-Mega-Man.pdb

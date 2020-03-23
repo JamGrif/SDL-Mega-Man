@@ -18,7 +18,7 @@ Game::Game()
 	LevelObj = new Level(RendererObj);
 
 	//Create the game object
-	PlayerObj = new Player(CameraObj, RendererObj);
+	PlayerObj = new Player(CameraObj, RendererObj, 2);
 
 }
 

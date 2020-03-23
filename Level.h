@@ -29,8 +29,8 @@ public:
 
 private:
 	//Size of each block
-	const int m_BlockWidth = 64;
-	const int m_BlockHeight = 64;
+	const int m_BlockWidth = 32;
+	const int m_BlockHeight = 32;
 
 	//Size of the currently loaded level in block amounts
 	int m_LevelWidth;

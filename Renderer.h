@@ -4,6 +4,7 @@
 
 #include "Camera.h"
 
+#include <list>
 #include <vector>
 #include <iostream>
 
@@ -49,9 +50,11 @@ namespace NSRenderer
 
 		SDL_Renderer* GetRenderer();
 
-		Sprite* CreateSprite();
+		Sprite* CreateSprite(int LayerNum);
 
 	private:
+
+		enum Layer { SkyL, BackL, PlayL, FrontL, UIL };
 
 		Camera* m_pcamera;
 

@@ -5,10 +5,10 @@ class Player :
 	public Creature
 {
 public:
-	Player(Camera* camera, Renderer* renderer);
+	Player(Camera* camera, Renderer* renderer, int LayerNum);
 	~Player();
 
-	static void Move(char direction);
+	void Move(char direction);
 
 	void Update();
 
