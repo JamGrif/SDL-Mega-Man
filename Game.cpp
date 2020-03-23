@@ -18,10 +18,12 @@ Game::Game()
 	LevelObj = new Level(RendererObj);
 
 	//Entity Manager
-	EMObj = new EntityManager();
+	//EMObj = new EntityManager();
 
 	//Create the game object
 	PlayerObj = new Player(CameraObj, RendererObj, 2);
+
+	bunbyheliObj = new BunbyHeli(RendererObj, 2);
 
 }
 

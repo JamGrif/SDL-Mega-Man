@@ -16,6 +16,7 @@
 #include "EntityManager.h"
 #include "Renderer.h"
 #include "Camera.h"
+#include "BunbyHeli.h"
 
 
 class Game
@@ -50,10 +51,12 @@ private:
 	Level* LevelObj;
 
 	//Entity Manager
-	EntityManager* EMObj;
+	//EntityManager* EMObj;
 
 	//Player
 	Player* PlayerObj;
+
+	BunbyHeli* bunbyheliObj;
 
 
 };
