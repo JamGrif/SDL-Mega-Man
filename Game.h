@@ -13,6 +13,7 @@
 //#include "Sky.h"
 #include "Level.h"
 //#include "Coin.h"
+#include "EntityManager.h"
 #include "Renderer.h"
 #include "Camera.h"
 
@@ -47,6 +48,9 @@ private:
 
 	//Level Manager
 	Level* LevelObj;
+
+	//Entity Manager
+	EntityManager* EMObj;
 
 	//Player
 	Player* PlayerObj;

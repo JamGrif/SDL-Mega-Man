@@ -164,6 +164,8 @@ namespace NSRenderer
 		float x = m_pcamera->GetCameraOffX();
 		float y = m_pcamera->GetCameraOffY();
 
+		SDL_SetRenderDrawColor(m_Renderer, 101, 141, 209, 255);
+
 		//Loop through layers drawing all the sprites
 		for (Sprite* sprite : SkyLayer)
 		{
