@@ -16,10 +16,14 @@ void EntityManager::UpdateEntities()
 	int x = 0;
 	for (Entity* entity : Entities) 
 	{
+		if (entity->GetMoveable()) 
+		{
+			//std::cout << "checking collision" << std::endl;
+		}
 		entity->Update();
 		x++;
 	}
-	std::cout << x << " entities were updated." << std::endl;
+	//std::cout << x << " entities were updated." << std::endl;
 }
 
 

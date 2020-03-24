@@ -16,6 +16,8 @@ Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
 	m_object->SetX(200);
 	m_object->SetY(100);
 
+	m_Moveable = true;
+
 }
 
 

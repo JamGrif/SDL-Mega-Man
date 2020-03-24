@@ -193,7 +193,7 @@ namespace NSRenderer
 			sprite->Draw(m_Renderer, x, y);
 			xd++;
 		}
-		std::cout << xd << " entites were drawn." << std::endl;
+		//std::cout << xd << " entites were drawn." << std::endl;
 		
 		//Show what was drawn
 		SDL_RenderPresent(m_Renderer);

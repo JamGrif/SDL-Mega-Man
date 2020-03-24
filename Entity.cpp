@@ -16,6 +16,11 @@ Entity::~Entity()
 
 }
 
+bool Entity::GetMoveable()
+{
+	return m_Moveable;
+}
+
 
 
 

@@ -10,6 +10,8 @@ BunbyHeli::BunbyHeli(Renderer* renderer, float x, float y, int LayerNum)
 
 	m_object->SetX(x);
 	m_object->SetY(y);
+
+	m_Moveable = true;
 }
 
 BunbyHeli::~BunbyHeli()
