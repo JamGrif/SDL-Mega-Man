@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include <iostream>
+//#include <iostream>
 enum KEYS_PRESSED_LIST 
 {
 	KEY_ESCAPE, KEY_A, KEY_D, KEY_R, KEY_SPACE, KEY_W, KEY_S, KEY_1, KEY_2, SIZE_OF_KEYS_PRESSED_ENUM
@@ -16,12 +16,9 @@ public:
 	~Input();
 
 	void Update();
-	bool KeyIsPressed(KEYS_PRESSED_LIST key);
-	//void KeyIsNotPressed(KEYS_PRESSED_LIST &key);
-	//void CheckForKeyPress();
 
+	bool KeyIsPressed(KEYS_PRESSED_LIST key);
 	bool MouseIsPressed(MOUSE_PRESSED_LIST mouse);
-	void MouseIsNotPressed(MOUSE_PRESSED_LIST &mouse);
 	
 	int GetMouseX();
 	int GetMouseY();

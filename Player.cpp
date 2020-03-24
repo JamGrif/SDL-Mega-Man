@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
+Player::Player(Camera* camera, Renderer* renderer, float X, float Y, int LayerNum)
 	:Entity(renderer, LayerNum)
 {
 
@@ -13,8 +13,8 @@ Player::Player(Camera* camera, Renderer* renderer, int LayerNum)
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
 
-	m_object->SetX(200);
-	m_object->SetY(100);
+	m_object->SetX(X);
+	m_object->SetY(Y);
 
 	m_Moveable = true;
 

@@ -8,7 +8,7 @@
 
 #include "Input.h"
 #include "UI.h"
-#include "Player.h"
+//#include "Player.h"
 //#include "Goomba.h"
 //#include "Sky.h"
 #include "LevelManager.h"
@@ -54,7 +54,7 @@ private:
 	LevelManager* LevelObj;
 
 	//Player
-	Player* PlayerObj;
+	//Player* PlayerObj;
 
 
 };

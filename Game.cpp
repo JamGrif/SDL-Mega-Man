@@ -15,24 +15,24 @@ Game::Game()
 	//m_ui = new UI(m_Renderer);
 
 	//Create entity manager
-	EMObj = new EntityManager(RendererObj);
+	EMObj = new EntityManager(RendererObj, CameraObj);
 
 	//Create level manager
 	LevelObj = new LevelManager(RendererObj, EMObj);
 
 	//Create the Player
-	PlayerObj = new Player(CameraObj, RendererObj, 2);
+	//PlayerObj = new Player(CameraObj, RendererObj, 2);
 
 
 }
 
 Game::~Game()
 {
-	if (PlayerObj)
+	/*if (PlayerObj)
 	{
 		delete PlayerObj;
 		PlayerObj = nullptr;
-	}
+	}*/
 
 	if (LevelObj)
 	{
@@ -79,13 +79,14 @@ Game::~Game()
 void Game::GameLoop()
 {
 	//level rendered once here -------------
+	EMObj->CreatePlayer(69, 69);
 	LevelObj->RenderLevel();
 	while (true) //Game ends if player collects 5 coins and reaches end flag
 	{
 		//Check for input
 		CheckKeyPressed();
 
-		PlayerObj->Update();
+		//PlayerObj->Update();
 
 		EMObj->UpdateEntities();
 
@@ -108,23 +109,23 @@ void Game::CheckKeyPressed()
 	//Keyboard
 	if (InputObj->KeyIsPressed(KEY_D))
 	{
-		PlayerObj->Move('r');
+		//PlayerObj->Move('r');
 	}
 	if (InputObj->KeyIsPressed(KEY_A))
 	{
-		PlayerObj->Move('l');
+		//PlayerObj->Move('l');
 	}
 	if (InputObj->KeyIsPressed(KEY_W))
 	{
-		PlayerObj->Move('u');
+		//PlayerObj->Move('u');
 	}
 	if (InputObj->KeyIsPressed(KEY_S))
 	{
-		PlayerObj->Move('d');
+		//PlayerObj->Move('d');
 	}
 	if (InputObj->KeyIsPressed(KEY_SPACE))
 	{
-		PlayerObj->Move('j');
+		//PlayerObj->Move('j');
 		//std::cout << "Space key is pressed!" << std::endl;
 	}
 	if (InputObj->KeyIsPressed(KEY_R))

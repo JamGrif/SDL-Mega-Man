@@ -10,7 +10,7 @@
 
 namespace NSRenderer
 {
-
+	enum Layer { SkyL, BackL, PlayL, FrontL, UIL };
 	class Sprite 
 	{
 	public:
@@ -54,7 +54,7 @@ namespace NSRenderer
 
 	private:
 
-		enum Layer { SkyL, BackL, PlayL, FrontL, UIL };
+		//enum Layer { SkyL, BackL, PlayL, FrontL, UIL };
 
 		Camera* m_pcamera;
 

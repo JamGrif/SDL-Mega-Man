@@ -13,12 +13,10 @@ Input::~Input()
 
 void Input::Update()
 {
-	//loop through all the events in the event list
-
+	//Loop through all the events in the event list
 	while (SDL_PollEvent(&m_InputEvent) != NULL)
 	{
-
-		//first check for key down
+		//Check for key down
 		if (m_InputEvent.type == SDL_KEYDOWN) {
 			SDL_Keycode keyPressed = m_InputEvent.key.keysym.sym;
 			switch (keyPressed)
@@ -53,7 +51,7 @@ void Input::Update()
 			}
 		}
 
-		//second check for key up
+		//Check for key up
 		else if (m_InputEvent.type == SDL_KEYUP)
 		{
 			SDL_Keycode keyPressed = m_InputEvent.key.keysym.sym;
@@ -86,7 +84,7 @@ void Input::Update()
 			}
 		}
 
-		//third check for mouse down
+		//Check for mouse down
 		else if (m_InputEvent.type == SDL_MOUSEBUTTONDOWN)
 		{
 			SDL_Keycode keyPressed = m_InputEvent.button.button;
@@ -104,7 +102,7 @@ void Input::Update()
 			}
 		}
 
-		//fourth check for mouse up
+		//Check for mouse up
 		else if (m_InputEvent.type == SDL_MOUSEBUTTONUP)
 		{
 			SDL_Keycode keyPressed = m_InputEvent.button.button;
@@ -122,7 +120,7 @@ void Input::Update()
 				break;
 			}
 		}
-		//fifth check for mouse motion
+		//Check for mouse motion
 		else if (m_InputEvent.type == SDL_MOUSEMOTION) 
 		{
 			m_XMouse = m_InputEvent.motion.x;
@@ -136,19 +134,9 @@ bool Input::KeyIsPressed(KEYS_PRESSED_LIST key)
 	return m_keysPressed[key];
 }
 
-/*void Input::KeyIsNotPressed(KEYS_PRESSED_LIST &key)
-{
-	m_keysPressed[key] = false;
-}*/
-
 bool Input::MouseIsPressed(MOUSE_PRESSED_LIST mouse)
 {
 	return m_mousePressed[mouse];
-}
-
-void Input::MouseIsNotPressed(MOUSE_PRESSED_LIST &mouse)
-{
-	m_mousePressed[mouse] = false;
 }
 
 int Input::GetMouseX()
