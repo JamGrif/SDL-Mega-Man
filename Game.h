@@ -11,12 +11,12 @@
 #include "Player.h"
 //#include "Goomba.h"
 //#include "Sky.h"
-#include "Level.h"
+#include "LevelManager.h"
 //#include "Coin.h"
 #include "EntityManager.h"
 #include "Renderer.h"
 #include "Camera.h"
-#include "BunbyHeli.h"
+
 
 
 class Game
@@ -47,16 +47,14 @@ private:
 	//UI
 	UI* UIObj;
 
-	//Level Manager
-	Level* LevelObj;
-
 	//Entity Manager
-	//EntityManager* EMObj;
+	EntityManager* EMObj;
+
+	//Level Manager
+	LevelManager* LevelObj;
 
 	//Player
 	Player* PlayerObj;
-
-	BunbyHeli* bunbyheliObj;
 
 
 };

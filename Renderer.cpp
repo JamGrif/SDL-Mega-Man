@@ -10,7 +10,6 @@ namespace NSRenderer
 	std::vector<Sprite*> FrontLayer;
 	std::vector<Sprite*> UILayer;
 
-
 	Sprite* Renderer::CreateSprite(int LayerNum)
 	{
 		Sprite* sprite = new Sprite(m_Renderer);
@@ -152,6 +151,9 @@ namespace NSRenderer
 		SDL_SetWindowIcon(m_Window, m_IconSurface);
 		SDL_FreeSurface(m_IconSurface);
 
+		//Set background colour
+		SDL_SetRenderDrawColor(m_Renderer, 101, 141, 209, 255);
+
 	}
 
 	Renderer::~Renderer()
@@ -164,30 +166,35 @@ namespace NSRenderer
 		float x = m_pcamera->GetCameraOffX();
 		float y = m_pcamera->GetCameraOffY();
 
-		SDL_SetRenderDrawColor(m_Renderer, 101, 141, 209, 255);
-
 		//Loop through layers drawing all the sprites
+		int xd = 0;
 		for (Sprite* sprite : SkyLayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
+			xd++;
 		}
 		for (Sprite* sprite : BackLayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
+			xd++;
 		}
 		for (Sprite* sprite : PlayLayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
+			xd++;
 		}
 		for (Sprite* sprite : FrontLayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
+			xd++;
 		}
 		for (Sprite* sprite : UILayer)
 		{
 			sprite->Draw(m_Renderer, x, y);
+			xd++;
 		}
-
+		std::cout << xd << " entites were drawn." << std::endl;
+		
 		//Show what was drawn
 		SDL_RenderPresent(m_Renderer);
 

@@ -14,16 +14,15 @@ Game::Game()
 	//Create UI
 	//m_ui = new UI(m_Renderer);
 
+	//Create entity manager
+	EMObj = new EntityManager(RendererObj);
+
 	//Create level manager
-	LevelObj = new Level(RendererObj);
+	LevelObj = new LevelManager(RendererObj, EMObj);
 
-	//Entity Manager
-	//EMObj = new EntityManager();
-
-	//Create the game object
+	//Create the Player
 	PlayerObj = new Player(CameraObj, RendererObj, 2);
 
-	bunbyheliObj = new BunbyHeli(RendererObj, 2);
 
 }
 
@@ -88,36 +87,7 @@ void Game::GameLoop()
 
 		PlayerObj->Update();
 
-		
-
-		//Drawing stuff
-		//m_Sky->draw();
-	
-
-		//m_Player->draw();
-
-		//Loop through coins updating and drawing them
-		/*for (Coin* coin : ListOfCoins)
-		{
-			coin->Update();
-			coin->draw();
-			if (coin->IsCoinCollected() == true)
-			{
-				m_Player->IncreaseCoinsCollected();
-			}
-		}
-
-		//Loop through goombas updating and drawing them
-		for (Goomba* goomba : ListOfGoombas)
-		{
-			goomba->Update();
-			goomba->draw();
-			if (goomba->GoombaHitPlayer() == true) 
-			{
-				m_Player->Respawn();
-			}
-
-		}*/
+		EMObj->UpdateEntities();
 
 		//m_ui->PresentUi(m_Player->GetCoinsCollected());
 		

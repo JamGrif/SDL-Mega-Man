@@ -7,25 +7,23 @@
 #include "SDL.h"
 #include "SDL_render.h"
 
-#include "LevelBlock.h"
+#include "EntityManager.h"
+
+//#include "LevelBlock.h"
 
 #include "Renderer.h"
 using namespace NSRenderer;
 
-class Level
+class LevelManager
 {
 public:
-	Level(Renderer* renderer);
-	~Level();
+	LevelManager(Renderer* renderer, EntityManager* entitymanager);
+	~LevelManager();
 
 	void LoadLevel();
 	void UnloadLevel();
 
-	void RenderLevel();
-
-	void CreateBlock(float X, float Y, const char* AssetName);
-	void DeleteBlocks();
-	
+	void RenderLevel();	
 
 private:
 	//Size of each block
@@ -53,23 +51,11 @@ private:
 	//Renderer
 	Renderer* m_prenderer;
 
-	//Blocks to draw
-	/*std::string GrassBlock = "Assets/GrassBlock.bmp";
-	std::string DirtBlock = "Assets/DirtBlock.bmp";
-	std::string StoneBlock = "Assets/StoneBlock.bmp";
-	std::string PlayerSpawn = "Assets/PlayerSpawn.bmp";
-	std::string CoalBlock = "Assets/CoalBlock.bmp";
-	std::string BackStoneBlock = "Assets/StoneBlockBack.bmp";
-	std::string BackDirtBlock = "Assets/DirtBlockBack.bmp";
-	*/
-
+	//Entity manager
+	EntityManager* m_pentitymanager;
 
 	//The level vector
 	std::vector<std::string> LevelVector;
-
-	//Level blocks
-	LevelBlock* levelblock;
-	std::list<LevelBlock*> ListOfBlocks;
 
 	//Loading level into vector
 	std::string ThingToAdd = "";

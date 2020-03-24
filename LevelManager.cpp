@@ -1,23 +1,25 @@
-#include "Level.h"
+#include "LevelManager.h"
 
-Level::Level(Renderer* renderer)
+LevelManager::LevelManager(Renderer* renderer, EntityManager* entitymanager)
 {
-	//Screen resoultion fits a width of 20 blocks and a height of 12 blocks
+
 	m_prenderer = renderer;
+
+	m_pentitymanager = entitymanager;
 
 	//By default, the program loads level 1 first
 	LoadLevel();
 	
 }
 
-Level::~Level()
+LevelManager::~LevelManager()
 {
 	LevelVector.clear();
 
 }
 
 
-void Level::LoadLevel()
+void LevelManager::LoadLevel()
 {
 	//Load level into vector
 	std::ifstream SaveLevelFromText;
@@ -81,6 +83,10 @@ void Level::LoadLevel()
 			{
 				LevelVector.push_back("9");
 			}
+			else if (ThingToAdd.at(0) == 'B')
+			{
+				LevelVector.push_back("B");
+			}
 			else //If game isn't sure whats in text position or there is a "." in position then adds empty space
 			{
 				LevelVector.push_back(".");
@@ -94,70 +100,67 @@ void Level::LoadLevel()
 
 }
 
-void Level::UnloadLevel()
+void LevelManager::UnloadLevel()
 {
 }
 
-void Level::CreateBlock(float X, float Y, const char* AssetName)
-{
-	std::cout << "adding to level list with x cord of " << X << " and y cord of " << Y << std::endl;
-	ListOfBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName, 2));
-}
 
-/*void Level::DeleteBlocks()
-{
-	for (LevelBlock* levelblock : ListOfBlocks) 
-	{
-		delete levelblock;
-		levelblock = nullptr;
-	}
-}*/
-
-
-
-void Level::RenderLevel()
+void LevelManager::RenderLevel()
 {
 	//Loop to draw the level
-
 	for (int i = 0; i < m_LevelHeight; i++)
 	{
 		for (int j = 0; j < m_LevelWidth; j++)
 		{
 			if (LevelVector.at(m_DrawingPosition) == "1") //Grass block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "2") //Dirt block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "3") //Stone block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "4") //Player spawn 
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "5") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "6") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "7") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "8") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
 			}
 			else if (LevelVector.at(m_DrawingPosition) == "9") //Coal Block
 			{
-				CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
+				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
+			}
+			else if (LevelVector.at(m_DrawingPosition) == "B") //Coal Block
+			{
+				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
+				m_pentitymanager->CreateBunbyHeli(m_XDrawTo, m_YDrawTo);
 			}
 			else //Empty space
 			{
