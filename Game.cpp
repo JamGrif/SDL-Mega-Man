@@ -15,7 +15,7 @@ Game::Game()
 	//m_ui = new UI(m_Renderer);
 
 	//Create entity manager
-	EMObj = new EntityManager(RendererObj, CameraObj);
+	EMObj = new EntityManager(RendererObj, CameraObj, InputObj);
 
 	//Create level manager
 	LevelObj = new LevelManager(RendererObj, EMObj);
@@ -78,22 +78,16 @@ Game::~Game()
 
 void Game::GameLoop()
 {
-	//level rendered once here -------------
-	EMObj->CreatePlayer(69, 69);
+	EMObj->CreatePlayer(0, 0);
 	LevelObj->RenderLevel();
-	while (true) //Game ends if player collects 5 coins and reaches end flag
+	while (true)
 	{
 		//Check for input
-		CheckKeyPressed();
-
-		//PlayerObj->Update();
+		InputObj->Update();
 
 		EMObj->UpdateEntities();
-
-		//m_ui->PresentUi(m_Player->GetCoinsCollected());
 		
 		//Render stuff
-		//CameraObj->CenterCamera();
 		RendererObj->RenderLoop();
 		SDL_Delay(20);
 
@@ -106,7 +100,7 @@ void Game::GameLoop()
 void Game::CheckKeyPressed()
 {
 	InputObj->Update();
-	//Keyboard
+	
 	if (InputObj->KeyIsPressed(KEY_D))
 	{
 		//PlayerObj->Move('r');

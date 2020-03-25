@@ -4,6 +4,7 @@
 using namespace NSRenderer;
 
 #include "Camera.h"
+#include "Input.h"
 
 #include "Player.h"
 #include "BunbyHeli.h"
@@ -14,7 +15,7 @@ using namespace NSRenderer;
 class EntityManager
 {
 public:
-	EntityManager(Renderer* renderer, Camera* camera);
+	EntityManager(Renderer* renderer, Camera* camera, Input* input);
 	~EntityManager();
 
 	void UpdateEntities();
@@ -28,6 +29,7 @@ private:
 	Renderer* m_prenderer;
 
 	Camera* m_pcamera;
+	Input* m_pinput;
 
 	std::list<Entity*> Entities;
 

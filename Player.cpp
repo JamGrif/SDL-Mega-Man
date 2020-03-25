@@ -1,10 +1,12 @@
 #include "Player.h"
 
-Player::Player(Camera* camera, Renderer* renderer, float X, float Y, int LayerNum)
+Player::Player(Camera* camera, Renderer* renderer, Input* input, float X, float Y, int LayerNum)
 	:Entity(renderer, LayerNum)
 {
 
 	m_pcamera = camera;
+
+	m_pinput = input;
 
 	//Megaman is 48 x 48
 	m_Width = 48;
@@ -26,36 +28,35 @@ Player::~Player()
 
 }
 
-void Player::Move(char Direction)
+void Player::Update()
 {
 	
-	if (Direction == 'u') //Up
+
+	if (m_pinput->KeyIsPressed(KEY_D))
+	{
+		//std::cout << "D" << std::endl;
+		m_object->SetX(m_object->GetX() + speed);
+	}
+	if (m_pinput->KeyIsPressed(KEY_A))
+	{
+		//std::cout << "A" << std::endl;
+		m_object->SetX(m_object->GetX() - speed);
+	}
+	if (m_pinput->KeyIsPressed(KEY_W))
 	{
 		m_object->SetY(m_object->GetY() - speed);
 	}
-	else if (Direction == 'd') //Down
+	if (m_pinput->KeyIsPressed(KEY_S))
 	{
 		m_object->SetY(m_object->GetY() + speed);
 	}
-	else if (Direction == 'l') //Left
+	if (m_pinput->KeyIsPressed(KEY_SPACE))
 	{
-		m_object->SetX(m_object->GetX() - speed);
+		
 	}
-	else if (Direction == 'r') //Right
-	{
-		m_object->SetX(m_object->GetX() + speed);
-	}
-	
-}
 
-void Player::Update()
-{
 	//Centers the camera on the player
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
-
-	//std::cout << "X is " << m_object->GetX() << std::endl;
-	//std::cout << "Y is " << m_object->GetY() << std::endl;
-
 }
 
 

@@ -1,19 +1,19 @@
 #pragma once
 #include "Entity.h"
 #include "Camera.h"
+#include "Input.h"
 class Player :
 	public Entity
 {
 public:
-	Player(Camera* camera, Renderer* renderer, float X, float Y, int LayerNum);
+	Player(Camera* camera, Renderer* renderer, Input* input, float X, float Y, int LayerNum);
 	~Player();
-
-	void Move(char direction);
 
 	void Update();
 
 private:
 
+	Input* m_pinput;
 	Camera* m_pcamera;
 
 	int speed = 5;
