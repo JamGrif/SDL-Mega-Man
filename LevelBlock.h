@@ -9,6 +9,7 @@ public:
 	~LevelBlock();
 
 	void Update();
+	void OnCollision();
 
 
 private:

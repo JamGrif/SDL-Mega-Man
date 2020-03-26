@@ -12,6 +12,9 @@ Player::Player(Camera* camera, Renderer* renderer, Input* input, float X, float 
 	m_Width = 48;
 	m_Height = 48;
 
+	//Collider.x = m_Width;
+	//Collider.y = m_Height;
+
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
 
@@ -57,6 +60,11 @@ void Player::Update()
 
 	//Centers the camera on the player
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
+}
+
+void Player::OnCollision()
+{
+	std::cout << "Player collidied with something" << std::endl;
 }
 
 

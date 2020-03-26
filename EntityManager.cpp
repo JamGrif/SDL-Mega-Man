@@ -22,12 +22,35 @@ void EntityManager::UpdateEntities()
 	{
 		if (entity->GetMoveable()) 
 		{
-			//std::cout << "checking collision" << std::endl;
+			if (CheckCollision(entity)) 
+			{
+				std::cout << entity << std::endl;
+				//entity->OnCollision();
+			}
+			
 		}
 		entity->Update();
 		x++;
 	}
 	//std::cout << x << " entities were updated." << std::endl;
+}
+
+bool EntityManager::CheckCollision(Entity*& EntityToCheck)
+{
+	EntityToCheck->UpdateCollisionPosition();
+	for (Entity* entity : Entities) //Loop through all entities
+	{
+		entity->UpdateCollisionPosition();
+		if (EntityToCheck != entity) //Ensures entity doesnt check for collision against itself
+		{
+			if ((EntityToCheck->GetRigCol() <= entity->GetLefCol() || EntityToCheck->GetLefCol() >= entity->GetRigCol()) && (EntityToCheck->GetTopCol() <= entity->GetBotCol() || EntityToCheck->GetBotCol() >= entity->GetTopCol()))
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 

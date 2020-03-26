@@ -19,6 +19,7 @@ public:
 	~EntityManager();
 
 	void UpdateEntities();
+	bool CheckCollision(Entity*& EntityToCheck);
 
 	void CreatePlayer(float X, float Y);
 	void CreateLevelBlock(float X, float Y, const char* AssetName);

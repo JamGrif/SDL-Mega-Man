@@ -11,6 +11,8 @@ public:
 
 	void Update();
 
+	virtual void OnCollision();
+
 private:
 
 	Input* m_pinput;

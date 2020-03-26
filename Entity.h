@@ -15,8 +15,16 @@ public:
 	~Entity();
 
 	virtual void Update() = 0;
+	virtual void OnCollision() = 0;
+
+	void UpdateCollisionPosition();
 
 	bool GetMoveable();
+
+	float GetTopCol();
+	float GetBotCol();
+	float GetLefCol();
+	float GetRigCol();
 
 protected:
 	
@@ -24,6 +32,15 @@ protected:
 	Renderer* m_prenderer;
 
 	Sprite* m_object;
+
+	//struct Vector2 { float x; float y; };
+	//Vector2 Collider{ 0, 0 };
+
+	//Collision
+	float m_Top;
+	float m_Bottom;
+	float m_Left;
+	float m_Right;
 
 	//Size of Entity
 	int m_Width = 0;

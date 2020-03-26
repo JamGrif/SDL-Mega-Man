@@ -12,6 +12,9 @@ BunbyHeli::BunbyHeli(Renderer* renderer, float x, float y, int LayerNum)
 	m_object->SetY(y);
 
 	m_Moveable = true;
+
+	//Collider.x = m_Width;
+	//Collider.y = m_Height;
 }
 
 BunbyHeli::~BunbyHeli()
@@ -20,4 +23,9 @@ BunbyHeli::~BunbyHeli()
 
 void BunbyHeli::Update()
 {
+}
+
+void BunbyHeli::OnCollision()
+{
+	std::cout << "Bunbyheli collidied with something" << std::endl;
 }

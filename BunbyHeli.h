@@ -9,6 +9,8 @@ public:
 
 	void Update();
 
+	void OnCollision();
+
 
 private:
 
