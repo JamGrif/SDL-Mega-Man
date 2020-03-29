@@ -24,7 +24,7 @@ void EntityManager::UpdateEntities()
 		{
 			if (CheckCollision(entity)) 
 			{
-				std::cout << entity << std::endl;
+				//std::cout << entity << std::endl;
 				//entity->OnCollision();
 			}
 			

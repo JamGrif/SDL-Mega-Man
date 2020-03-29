@@ -64,7 +64,7 @@ void Player::Update()
 
 void Player::OnCollision()
 {
-	std::cout << "Player collidied with something" << std::endl;
+	//std::cout << "Player collidied with something" << std::endl;
 }
 
 
