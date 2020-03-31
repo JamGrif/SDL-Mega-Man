@@ -33,8 +33,6 @@ Player::~Player()
 
 void Player::Update()
 {
-	
-
 	if (m_pinput->KeyIsPressed(KEY_D))
 	{
 		//std::cout << "D" << std::endl;
@@ -62,9 +60,9 @@ void Player::Update()
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
 }
 
-void Player::OnCollision()
+void Player::OnCollision(Entity* entity)
 {
-	//std::cout << "Player collidied with something" << std::endl;
+	std::cout << "Player collidied with something" << std::endl;
 }
 
 

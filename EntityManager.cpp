@@ -25,7 +25,7 @@ void EntityManager::UpdateEntities()
 			if (CheckCollision(entity)) 
 			{
 				//std::cout << entity << std::endl;
-				//entity->OnCollision();
+				entity->OnCollision();
 			}
 			
 		}
@@ -43,7 +43,19 @@ bool EntityManager::CheckCollision(Entity*& EntityToCheck)
 		entity->UpdateCollisionPosition();
 		if (EntityToCheck != entity) //Ensures entity doesnt check for collision against itself
 		{
-			if ((EntityToCheck->GetRigCol() <= entity->GetLefCol() || EntityToCheck->GetLefCol() >= entity->GetRigCol()) && (EntityToCheck->GetTopCol() <= entity->GetBotCol() || EntityToCheck->GetBotCol() >= entity->GetTopCol()))
+			if (!EntityToCheck->GetTopCol() >= entity->GetBotCol()) 
+			{
+				return true;
+			}
+			if (!EntityToCheck->GetLefCol() >= entity->GetRigCol()) 
+			{
+				return true;
+			}
+			if (!EntityToCheck->GetBotCol() <= entity->GetTopCol()) 
+			{
+				return true;
+			}
+			if (!EntityToCheck->GetRigCol() <= entity->GetLefCol()) 
 			{
 				return true;
 			}

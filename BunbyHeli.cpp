@@ -25,7 +25,7 @@ void BunbyHeli::Update()
 {
 }
 
-void BunbyHeli::OnCollision()
+void BunbyHeli::OnCollision(Entity* entity)
 {
 	std::cout << "Bunbyheli collidied with something" << std::endl;
 }

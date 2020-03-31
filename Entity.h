@@ -15,7 +15,7 @@ public:
 	~Entity();
 
 	virtual void Update() = 0;
-	virtual void OnCollision() = 0;
+	virtual void OnCollision(Entity* entity) = 0;
 
 	void UpdateCollisionPosition();
 

@@ -9,7 +9,7 @@ public:
 
 	void Update();
 
-	void OnCollision();
+	virtual void OnCollision(Entity* entity);
 
 
 private:

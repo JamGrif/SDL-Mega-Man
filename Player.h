@@ -11,7 +11,7 @@ public:
 
 	void Update();
 
-	virtual void OnCollision();
+	virtual void OnCollision(Entity* entity);
 
 private:
 
