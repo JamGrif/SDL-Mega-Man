@@ -7,7 +7,7 @@
 #include "SDL.h"
 #include "SDL_render.h"
 
-#include "EntityManager.h"
+#include "LevelBlock.h"
 
 #include "Renderer.h"
 using namespace NSRenderer;
@@ -15,13 +15,20 @@ using namespace NSRenderer;
 class LevelManager
 {
 public:
-	LevelManager(Renderer* renderer, EntityManager* entitymanager);
+	LevelManager(Renderer* renderer);
 	~LevelManager();
 
 	void LoadLevel();
 	void UnloadLevel();
 
 	void RenderLevel();	
+
+	void CreateLevelBlock(float X, float Y, const char* AssetName);
+
+	//For entities
+	bool CheckForWall(float EntityTop, float EntityBottom, float EntityLeft, float EntityRight);
+	bool CheckBlock(LevelBlock* lb, float EntityTop, float EntityBottom, float EntityLeft, float EntityRight);
+
 
 private:
 	//Size of each block
@@ -49,11 +56,12 @@ private:
 	//Renderer
 	Renderer* m_prenderer;
 
-	//Entity manager
-	EntityManager* m_pentitymanager;
-
 	//The level vector
 	std::vector<std::string> LevelVector;
+
+	//Level blocks list
+	LevelBlock* levelblock;
+	std::list<LevelBlock*> LevelBlocks;
 
 	//Loading level into vector
 	std::string ThingToAdd = "";

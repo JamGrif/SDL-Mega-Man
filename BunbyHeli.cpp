@@ -1,7 +1,7 @@
 #include "BunbyHeli.h"
 
-BunbyHeli::BunbyHeli(Renderer* renderer, float x, float y, int LayerNum)
-	:Entity(renderer, LayerNum)
+BunbyHeli::BunbyHeli(Renderer* renderer, LevelManager* levelmanager, float x, float y, int LayerNum)
+	:MoveableEntity(renderer, levelmanager, LayerNum)
 {
 	m_object->SetSprite("Assets/BunbyHeli1.bmp");
 
@@ -13,8 +13,6 @@ BunbyHeli::BunbyHeli(Renderer* renderer, float x, float y, int LayerNum)
 
 	m_Moveable = true;
 
-	//Collider.x = m_Width;
-	//Collider.y = m_Height;
 }
 
 BunbyHeli::~BunbyHeli()
@@ -23,9 +21,4 @@ BunbyHeli::~BunbyHeli()
 
 void BunbyHeli::Update()
 {
-}
-
-void BunbyHeli::OnCollision(Entity* entity)
-{
-	std::cout << "Bunbyheli collidied with something" << std::endl;
 }

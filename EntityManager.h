@@ -5,24 +5,22 @@ using namespace NSRenderer;
 
 #include "Camera.h"
 #include "Input.h"
+#include "LevelManager.h"
 
 #include "Player.h"
 #include "BunbyHeli.h"
-
-#include "LevelBlock.h"
 
 #include <list>
 class EntityManager
 {
 public:
-	EntityManager(Renderer* renderer, Camera* camera, Input* input);
+	EntityManager(Renderer* renderer, Camera* camera, Input* input, LevelManager* levelmanager);
 	~EntityManager();
 
 	void UpdateEntities();
-	bool CheckCollision(Entity*& EntityToCheck);
 
 	void CreatePlayer(float X, float Y);
-	void CreateLevelBlock(float X, float Y, const char* AssetName);
+
 	void CreateBunbyHeli(float X, float Y);
 
 private:
@@ -30,13 +28,14 @@ private:
 	Renderer* m_prenderer;
 
 	Camera* m_pcamera;
+
 	Input* m_pinput;
+
+	LevelManager* m_plevelmanager;
 
 	std::list<Entity*> Entities;
 
 	Player* player;
-
-	LevelBlock* levelblock;
 
 	BunbyHeli* bunbyheli;
 

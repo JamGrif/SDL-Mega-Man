@@ -1,11 +1,9 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager(Renderer* renderer, EntityManager* entitymanager)
+LevelManager::LevelManager(Renderer* renderer)
 {
 
 	m_prenderer = renderer;
-
-	m_pentitymanager = entitymanager;
 
 	//By default, the program loads level 1 first
 	LoadLevel();
@@ -83,10 +81,6 @@ void LevelManager::LoadLevel()
 			{
 				LevelVector.push_back("9");
 			}
-			else if (ThingToAdd.at(0) == 'B')
-			{
-				LevelVector.push_back("B");
-			}
 			else //If game isn't sure whats in text position or there is a "." in position then adds empty space
 			{
 				LevelVector.push_back(".");
@@ -112,55 +106,41 @@ void LevelManager::RenderLevel()
 	{
 		for (int j = 0; j < m_LevelWidth; j++)
 		{
-			if (LevelVector.at(m_DrawingPosition) == "1") //Grass block
+			if (LevelVector.at(m_DrawingPosition) == "1")
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/1.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "2") //Dirt block
+			else if (LevelVector.at(m_DrawingPosition) == "2")
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/2.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "3") //Stone block
+			else if (LevelVector.at(m_DrawingPosition) == "3")
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/3.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "4") //Player spawn 
+			else if (LevelVector.at(m_DrawingPosition) == "4") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/4.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "5") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "5") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/5.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "6") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "6") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/6.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "7") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "7") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/7.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "8") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "8") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/8.bmp");
 			}
-			else if (LevelVector.at(m_DrawingPosition) == "9") //Coal Block
+			else if (LevelVector.at(m_DrawingPosition) == "9") 
 			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
-				m_pentitymanager->CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
-			}
-			else if (LevelVector.at(m_DrawingPosition) == "B") //Coal Block
-			{
-				//CreateBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
-				m_pentitymanager->CreateBunbyHeli(m_XDrawTo, m_YDrawTo);
+				CreateLevelBlock(m_XDrawTo, m_YDrawTo, "Assets/9.bmp");
 			}
 			else //Empty space
 			{
@@ -171,11 +151,50 @@ void LevelManager::RenderLevel()
 			m_DrawingPosition++;
 		}
 
-		//70 goes to the next block that needs to be renderered on the next line. will break if the rows are made bigger in level text file 
-		
 		m_XDrawTo = SavedXDrawTo;
 		m_YDrawTo += m_BlockHeight;
 	}
+}
 
+void LevelManager::CreateLevelBlock(float X, float Y, const char* AssetName)
+{
+	std::cout << "Adding levelblock to block list with x cord of " << X << " and y cord of " << Y << std::endl;
+	LevelBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName, PlayL));
+}
+
+bool LevelManager::CheckForWall(float EntityTop, float EntityBottom, float EntityLeft, float EntityRight)
+{
+	//Loop through the list of levelblocks. Returns true if a block collidies with entity otherwise returns false.
+	for (LevelBlock* lb : LevelBlocks) 
+	{
+		if (CheckBlock(lb, EntityTop, EntityBottom, EntityLeft, EntityRight))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool LevelManager::CheckBlock(LevelBlock* lb, float EntityTop, float EntityBottom, float EntityLeft, float EntityRight)
+{
+	//Returns true if block collidies with entity
+	if (EntityTop >= lb->GetBotCol()) 
+	{
+		return false;
+	}
+	if (EntityLeft >= lb->GetRigCol())
+	{
+		return false;
+	}
+	if (EntityBottom <= lb->GetTopCol()) 
+	{
+		return false;
+	}
+	if (EntityRight <= lb->GetLefCol())
+	{
+		return false;
+	}
+	return true;
+	
 }
 

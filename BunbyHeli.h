@@ -1,15 +1,13 @@
 #pragma once
-#include "Entity.h"
+#include "MoveableEntity.h"
 class BunbyHeli :
-	public Entity
+	public MoveableEntity
 {
 public:
-	BunbyHeli(Renderer* renderer, float x, float y, int LayerNum);
+	BunbyHeli(Renderer* renderer, LevelManager* levelmanager, float x, float y, int LayerNum);
 	~BunbyHeli();
 
 	void Update();
-
-	virtual void OnCollision(Entity* entity);
 
 
 private:

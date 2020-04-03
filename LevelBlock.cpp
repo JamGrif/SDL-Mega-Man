@@ -11,6 +11,8 @@ LevelBlock::LevelBlock(Renderer* renderer, float x, float y, const char* AssetNa
 	m_Width = 32;
 	m_Height = 32;
 
+	UpdateCollisionPosition();
+
 	//Collider.x = m_Width;
 	//Collider.y = m_Height;
 
@@ -21,9 +23,5 @@ LevelBlock::~LevelBlock()
 }
 
 void LevelBlock::Update()
-{
-}
-
-void LevelBlock::OnCollision()
 {
 }

@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(Camera* camera, Renderer* renderer, Input* input, float X, float Y, int LayerNum)
-	:Entity(renderer, LayerNum)
+Player::Player(Camera* camera, Renderer* renderer, Input* input, LevelManager* levelmanager, float X, float Y, int LayerNum)
+	:MoveableEntity(renderer, levelmanager, LayerNum)
 {
 
 	m_pcamera = camera;
@@ -12,9 +12,6 @@ Player::Player(Camera* camera, Renderer* renderer, Input* input, float X, float 
 	m_Width = 48;
 	m_Height = 48;
 
-	//Collider.x = m_Width;
-	//Collider.y = m_Height;
-
 	//Set the player sprite to the default sprite
 	m_object->SetSprite("Assets/PlayerIdle1.bmp");
 
@@ -22,6 +19,10 @@ Player::Player(Camera* camera, Renderer* renderer, Input* input, float X, float 
 	m_object->SetY(Y);
 
 	m_Moveable = true;
+
+	m_Acceleration = 1;
+
+
 
 }
 
@@ -35,34 +36,82 @@ void Player::Update()
 {
 	if (m_pinput->KeyIsPressed(KEY_D))
 	{
-		//std::cout << "D" << std::endl;
-		m_object->SetX(m_object->GetX() + speed);
+		Right();
+		std::cout << "right" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_A))
 	{
-		//std::cout << "A" << std::endl;
-		m_object->SetX(m_object->GetX() - speed);
+		Left();
+		std::cout << "left" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_W))
 	{
-		m_object->SetY(m_object->GetY() - speed);
+		Up();
+		std::cout << "up" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_S))
 	{
-		m_object->SetY(m_object->GetY() + speed);
+		Down();
+		std::cout << "down" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_SPACE))
 	{
 		
 	}
 
+	m_object->SetX(m_object->GetX() + Velocity.x);
+
+	m_object->SetY(m_object->GetY() + Velocity.y);
+
+
+	//if (Velocity.x != 0) { Velocity.x -= m_AirResistance; if (0 - Velocity.x > Velocity.x) { Velocity.x = 0; } }
+	//if (Velocity.y != 0) { Velocity.y -= m_AirResistance; if (0 - Velocity.y > Velocity.y) { Velocity.y = 0; } }
+
+	//Apply air resistance to velocity
+	/*
+	if (!m_HorizontalMoving)
+	{
+		if (Velocity.x != 0)
+		{
+			if (Velocity.x > 0)
+			{
+				Velocity.x -= m_AirResistance;
+				if (0 - Velocity.x > Velocity.x) { Velocity.x = 0; }
+			}
+			else if (Velocity.x < 0)
+			{
+				Velocity.x += m_AirResistance;
+				if (0 - Velocity.x < Velocity.x) { Velocity.x = 0; }
+			}
+		}
+	}
+
+	if (!m_VerticalMoving) 
+	{
+		if (Velocity.y != 0)
+		{
+			if (Velocity.y > 0)
+			{
+				Velocity.y -= m_AirResistance;
+				if (0 - Velocity.y > Velocity.y) { Velocity.y = 0; }
+			}
+			else if (Velocity.y < 0)
+			{
+				Velocity.y += m_AirResistance;
+				if (0 - Velocity.y < Velocity.x) { Velocity.y = 0; }
+			}
+		}
+	}
+		
+	m_HorizontalMoving = false;
+	m_VerticalMoving = false;
+	*/
+
+	//std::cout << "x velocity is " << Velocity.x << std::endl;
+	//std::cout << "y velocity is " << Velocity.y << std::endl;
+
 	//Centers the camera on the player
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
-}
-
-void Player::OnCollision(Entity* entity)
-{
-	std::cout << "Player collidied with something" << std::endl;
 }
 
 

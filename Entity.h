@@ -1,9 +1,9 @@
 #pragma once
-#include <string>
 #include "SDL.h"
 #include "SDL_render.h"
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "Renderer.h"
 using namespace NSRenderer;
@@ -15,7 +15,6 @@ public:
 	~Entity();
 
 	virtual void Update() = 0;
-	virtual void OnCollision(Entity* entity) = 0;
 
 	void UpdateCollisionPosition();
 
@@ -32,9 +31,6 @@ protected:
 	Renderer* m_prenderer;
 
 	Sprite* m_object;
-
-	//struct Vector2 { float x; float y; };
-	//Vector2 Collider{ 0, 0 };
 
 	//Collision
 	float m_Top;

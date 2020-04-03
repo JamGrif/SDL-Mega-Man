@@ -14,11 +14,13 @@ Game::Game()
 	//Create UI
 	//m_ui = new UI(m_Renderer);
 
-	//Create entity manager
-	EMObj = new EntityManager(RendererObj, CameraObj, InputObj);
-
 	//Create level manager
-	LevelObj = new LevelManager(RendererObj, EMObj);
+	LevelObj = new LevelManager(RendererObj);
+
+	//Create entity manager
+	EMObj = new EntityManager(RendererObj, CameraObj, InputObj, LevelObj);
+
+	
 
 	//Create the Player
 	//PlayerObj = new Player(CameraObj, RendererObj, 2);
@@ -78,7 +80,7 @@ Game::~Game()
 
 void Game::GameLoop()
 {
-	EMObj->CreatePlayer(0, 0);
+	EMObj->CreatePlayer(75, 125);
 	LevelObj->RenderLevel();
 	while (true)
 	{
