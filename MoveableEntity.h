@@ -23,12 +23,13 @@ protected:
 
 	float m_Acceleration = 0;
 
-
-	const float m_MaxVelocity = 1;
-	const float m_AirResistance = 3;
+	const float m_MaxVelocity = 8;
+	const float m_AirResistance = 1;
+	const float m_Gravity = 3;
 
 	bool m_VerticalMoving = false;
 	bool m_HorizontalMoving = false;
+	bool Falling = false;
 
 	LevelManager* m_plevelmanager;
 

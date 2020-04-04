@@ -80,16 +80,17 @@ Game::~Game()
 
 void Game::GameLoop()
 {
-	EMObj->CreatePlayer(75, 125);
+	EMObj->CreatePlayer(75, -50);
 	LevelObj->RenderLevel();
 	while (true)
 	{
 		//Check for input
 		InputObj->Update();
 
+		//Update entities
 		EMObj->UpdateEntities();
 		
-		//Render stuff
+		//Render scene
 		RendererObj->RenderLoop();
 		SDL_Delay(20);
 

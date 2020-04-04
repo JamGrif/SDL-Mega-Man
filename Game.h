@@ -53,9 +53,5 @@ private:
 	//Level Manager
 	LevelManager* LevelObj;
 
-	//Player
-	//Player* PlayerObj;
-
-
 };
 
