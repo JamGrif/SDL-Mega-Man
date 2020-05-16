@@ -158,7 +158,7 @@ void LevelManager::RenderLevel()
 
 void LevelManager::CreateLevelBlock(float X, float Y, const char* AssetName)
 {
-	std::cout << "Adding levelblock to block list with x cord of " << X << " and y cord of " << Y << std::endl;
+	//std::cout << "Adding levelblock to block list with x cord of " << X << " and y cord of " << Y << std::endl;
 	LevelBlocks.push_back(levelblock = new LevelBlock(m_prenderer, X, Y, AssetName, PlayL));
 }
 

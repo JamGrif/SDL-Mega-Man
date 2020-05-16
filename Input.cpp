@@ -2,17 +2,47 @@
 
 Input::Input()
 {
+	SDL_Init(SDL_INIT_JOYSTICK);
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+
 	for (int i = 0; i < SIZE_OF_KEYS_PRESSED_ENUM; i++) { m_keysPressed[i] = NULL; }
 	for (int i = 0; i < SIZE_OF_MOUSE_PRESSED_ENUM; i++) { m_mousePressed[i] = NULL; }
+
+	//Check if controller is plugged in
+	if (SDL_NumJoysticks() < 1) 
+	{
+		ControllerActive = false;
+		std::cout << "No controller detected" << std::endl;
+	}
+	else 
+	{
+		ControllerActive = true;
+		std::cout << "Controller detected" << std::endl;
+
+		Controller = SDL_JoystickOpen(0);
+	}
 }
 
 Input::~Input()
 {
-
+	//Close controller interface
+	SDL_JoystickClose(Controller);
+	Controller = NULL;
 }
 
 void Input::Update()
 {
+	//Check if controller is plugged in
+	/*if ()
+	{
+		Controller = true;
+		std::cout << "Controller disconnected" << std::endl;
+	}
+	else
+	{
+		Controller = false;
+		std::cout << "Controller connected" << std::endl;
+	}*/
 	//Loop through all the events in the event list
 	while (SDL_PollEvent(&m_InputEvent) != NULL)
 	{
@@ -120,11 +150,49 @@ void Input::Update()
 				break;
 			}
 		}
+
 		//Check for mouse motion
-		else if (m_InputEvent.type == SDL_MOUSEMOTION) 
+		else if (m_InputEvent.type == SDL_MOUSEMOTION)
 		{
 			m_XMouse = m_InputEvent.motion.x;
 			m_YMouse = m_InputEvent.motion.y;
+
+		}
+
+		//Check for controller down
+		else if (m_InputEvent.type == SDL_JOYBUTTONDOWN) 
+		{
+			SDL_Keycode keyPressed = m_InputEvent.cbutton.button;
+			switch (keyPressed) 
+			{
+			case SDL_CONTROLLER_BUTTON_A:
+				m_controllerPressed[BUTTON_A] = true;
+				break;
+			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+				m_controllerPressed[DPAD_LEFT] = true;
+				break;
+			case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+				m_controllerPressed[DPAD_RIGHT] = true;
+				break;
+			}
+		}
+
+		//Check for controller up
+		else if (m_InputEvent.type == SDL_JOYBUTTONUP)
+		{
+			SDL_Keycode keyPressed = m_InputEvent.cbutton.button;
+			switch (keyPressed)
+			{
+			case SDL_CONTROLLER_BUTTON_A:
+				m_controllerPressed[BUTTON_A] = false;
+				break;
+			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+				m_controllerPressed[DPAD_LEFT] = false;
+				break;
+			case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+				m_controllerPressed[DPAD_RIGHT] = false;
+				break;
+			}
 		}
 	}
 }
@@ -137,6 +205,11 @@ bool Input::KeyIsPressed(KEYS_PRESSED_LIST key)
 bool Input::MouseIsPressed(MOUSE_PRESSED_LIST mouse)
 {
 	return m_mousePressed[mouse];
+}
+
+bool Input::ControllerIsPressed(CONTROLLER_PRESSED_LIST controller)
+{
+	return m_controllerPressed[controller];
 }
 
 int Input::GetMouseX()

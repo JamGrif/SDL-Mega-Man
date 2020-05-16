@@ -35,12 +35,12 @@ void Player::Update()
 	/*
 		Input to move
 	*/
-	if (m_pinput->KeyIsPressed(KEY_D))
+	if (m_pinput->KeyIsPressed(KEY_D) || m_pinput->ControllerIsPressed(DPAD_RIGHT))
 	{
 		Right();
 		//std::cout << "right" << std::endl;
 	}
-	if (m_pinput->KeyIsPressed(KEY_A))
+	if (m_pinput->KeyIsPressed(KEY_A) || m_pinput->ControllerIsPressed(DPAD_LEFT))
 	{
 		Left();
 		//std::cout << "left" << std::endl;
@@ -55,9 +55,9 @@ void Player::Update()
 		Down();
 		//std::cout << "down" << std::endl;
 	}
-	if (m_pinput->KeyIsPressed(KEY_SPACE))
+	if (m_pinput->KeyIsPressed(KEY_SPACE) || m_pinput->ControllerIsPressed(BUTTON_A))
 	{
-		
+		std::cout << "jumped" << std::endl;
 	}
 
 	/*
