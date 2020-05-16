@@ -194,6 +194,28 @@ void Input::Update()
 				break;
 			}
 		}
+
+		//Check for controller joystick
+		else if (m_InputEvent.type == SDL_JOYAXISMOTION) 
+		{
+			//X axis motion
+			if (m_InputEvent.jaxis.axis == 0) 
+			{
+				if (m_InputEvent.jaxis.value < -Deadzone) 
+				{
+					XDirection = -1;
+				}
+				else if (m_InputEvent.jaxis.value > Deadzone)
+				{
+					XDirection = 1;
+				}
+				else 
+				{
+					XDirection = 0;
+				}
+			}
+
+		}
 	}
 }
 
@@ -210,6 +232,16 @@ bool Input::MouseIsPressed(MOUSE_PRESSED_LIST mouse)
 bool Input::ControllerIsPressed(CONTROLLER_PRESSED_LIST controller)
 {
 	return m_controllerPressed[controller];
+}
+
+bool Input::ControllerJoystick(JOYSTICK_POSITION_LIST joystick)
+{
+	return m_joystickPosition[joystick];
+}
+
+int Input::GetJoystickPosition()
+{
+	return XDirection;
 }
 
 int Input::GetMouseX()

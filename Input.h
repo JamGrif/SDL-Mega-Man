@@ -14,6 +14,7 @@ enum CONTROLLER_PRESSED_LIST
 {
 	DPAD_LEFT, DPAD_RIGHT, BUTTON_A, SIZE_OF_CONTROLLER_PRESSED_ENUM
 };
+
 class Input
 {
 public:
@@ -25,6 +26,8 @@ public:
 	bool KeyIsPressed(KEYS_PRESSED_LIST key);
 	bool MouseIsPressed(MOUSE_PRESSED_LIST mouse);
 	bool ControllerIsPressed(CONTROLLER_PRESSED_LIST controller);
+
+	int GetJoystickPosition();
 	
 	int GetMouseX();
 	int GetMouseY();
@@ -33,7 +36,9 @@ private:
 	int m_XMouse = 0;
 	int m_YMouse = 0;
 
-	//const int Deadzone = 7500;
+	int XDirection = 0;
+
+	const int Deadzone = 7500;
 
 	KEYS_PRESSED_LIST KeyList;
 	MOUSE_PRESSED_LIST MouseList;

@@ -35,12 +35,12 @@ void Player::Update()
 	/*
 		Input to move
 	*/
-	if (m_pinput->KeyIsPressed(KEY_D) || m_pinput->ControllerIsPressed(DPAD_RIGHT))
+	if (m_pinput->KeyIsPressed(KEY_D) || m_pinput->GetJoystickPosition() == 1)
 	{
 		Right();
 		//std::cout << "right" << std::endl;
 	}
-	if (m_pinput->KeyIsPressed(KEY_A) || m_pinput->ControllerIsPressed(DPAD_LEFT))
+	if (m_pinput->KeyIsPressed(KEY_A) || m_pinput->GetJoystickPosition() == -1)
 	{
 		Left();
 		//std::cout << "left" << std::endl;
