@@ -3,6 +3,7 @@
 #include "SDL_ttf.h"
 
 #include <iostream>
+#include <fstream>
 #include <list>
 #include <string>
 
@@ -16,8 +17,7 @@
 #include "EntityManager.h"
 #include "Renderer.h"
 #include "Camera.h"
-
-
+#include "Audio.h"
 
 class Game
 {
@@ -34,6 +34,11 @@ private:
 	//Size of the window
 	int m_ScreenWidth = 1280;
 	int m_ScreenHeight = 720;
+
+	//FPS
+	Uint32 TotalFrameTicks = 0;
+	Uint32 TotalFrames = 0;
+
 
 	//Camera
 	Camera* CameraObj;
@@ -52,6 +57,9 @@ private:
 
 	//Level Manager
 	LevelManager* LevelObj;
+
+	//AudioManager
+	Audio* AudioObj;
 
 };
 

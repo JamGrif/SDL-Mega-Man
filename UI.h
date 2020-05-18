@@ -3,21 +3,30 @@
 #include <string>
 #include "SDL_ttf.h"
 #include <iostream>
+
+#include "Renderer.h"
+
+using namespace NSRenderer;
+
 class UI
 {
 public:
-	UI(SDL_Renderer* renderer);
+	UI(Renderer* renderer);
 	~UI();
 
-	void PresentUi(int PCoins);
+	void SetFPS(float fps);
+	void PresentUi();
 
 	//TTF_Font* font
 
 private:
 
+	Renderer* m_prenderer;
+
+	float FPS = 0;
+
 	TTF_Font* m_pFont = TTF_OpenFont("Assets/DejaVuSans.ttf", 45);
 
-	SDL_Renderer* m_pRenderer;
 	SDL_Surface* surface;
 	SDL_Texture* texture;
 
@@ -25,17 +34,14 @@ private:
 	int texH = 0;
 
 	SDL_Rect textRect;
-	Uint8 R = 255;
-	Uint8 G = 255;
-	Uint8 B = 255;
+	Uint8 R = 0;
+	Uint8 G = 0;
+	Uint8 B = 0;
 	SDL_Color color = { R, G, B };
 
 	//UI
-	std::string FirstLine = "        COINS            ";
-	std::string SecondLine = "Win by collecting 5 coins and reaching end flag";
+	std::string FirstLine = "FPS:";
 
-	int CoinsCollected = 0;
-	std::string SCoinsCollected = "";
 	
 };
 

@@ -8,6 +8,9 @@
 #include <vector>
 #include <iostream>
 
+
+
+
 namespace NSRenderer
 {
 	enum Layer { SkyL, BackL, PlayL, FrontL, UIL };

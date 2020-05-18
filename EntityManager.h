@@ -11,6 +11,7 @@ using namespace NSRenderer;
 #include "BunbyHeli.h"
 
 #include <list>
+
 class EntityManager
 {
 public:

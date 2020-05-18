@@ -8,6 +8,7 @@
 #include "Renderer.h"
 using namespace NSRenderer;
 
+
 class Entity
 {
 public:

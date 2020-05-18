@@ -2,6 +2,7 @@
 
 Input::Input()
 {
+	std::cout << "Created InputManager" << std::endl;
 	SDL_Init(SDL_INIT_JOYSTICK);
 	SDL_Init(SDL_INIT_GAMECONTROLLER);
 
@@ -32,17 +33,21 @@ Input::~Input()
 
 void Input::Update()
 {
+	SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
+	SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+
 	//Check if controller is plugged in
-	/*if ()
+	if (ControllerActive == true && SDL_NumJoysticks() < 1)
 	{
-		Controller = true;
+		ControllerActive = false;
 		std::cout << "Controller disconnected" << std::endl;
 	}
-	else
+	else if (ControllerActive == false && SDL_NumJoysticks() > 0)
 	{
-		Controller = false;
+		ControllerActive = true;
 		std::cout << "Controller connected" << std::endl;
-	}*/
+	}
 	//Loop through all the events in the event list
 	while (SDL_PollEvent(&m_InputEvent) != NULL)
 	{
@@ -168,6 +173,9 @@ void Input::Update()
 			case SDL_CONTROLLER_BUTTON_A:
 				m_controllerPressed[BUTTON_A] = true;
 				break;
+			case SDL_CONTROLLER_BUTTON_B:
+				m_controllerPressed[BUTTON_B] = true;
+				break;
 			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 				m_controllerPressed[DPAD_LEFT] = true;
 				break;
@@ -185,6 +193,9 @@ void Input::Update()
 			{
 			case SDL_CONTROLLER_BUTTON_A:
 				m_controllerPressed[BUTTON_A] = false;
+				break;
+			case SDL_CONTROLLER_BUTTON_B:
+				m_controllerPressed[BUTTON_B] = true;
 				break;
 			case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
 				m_controllerPressed[DPAD_LEFT] = false;
@@ -232,11 +243,6 @@ bool Input::MouseIsPressed(MOUSE_PRESSED_LIST mouse)
 bool Input::ControllerIsPressed(CONTROLLER_PRESSED_LIST controller)
 {
 	return m_controllerPressed[controller];
-}
-
-bool Input::ControllerJoystick(JOYSTICK_POSITION_LIST joystick)
-{
-	return m_joystickPosition[joystick];
 }
 
 int Input::GetJoystickPosition()

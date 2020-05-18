@@ -2,7 +2,7 @@
 
 LevelManager::LevelManager(Renderer* renderer)
 {
-
+	std::cout << "Created Levelmanager" << std::endl;
 	m_prenderer = renderer;
 
 	//By default, the program loads level 1 first
@@ -33,7 +33,7 @@ void LevelManager::LoadLevel()
 	SaveLevelFromText.seekg(0) >> temp;
 	m_LevelWidth = temp.length();
 
-	m_LevelHeight = 15;
+	m_LevelHeight = 17;
 
 	ThingToAdd = "";
 	temp = "";

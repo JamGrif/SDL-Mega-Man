@@ -12,7 +12,7 @@ Game::Game()
 	InputObj = new Input();
 
 	//Create UI
-	//m_ui = new UI(m_Renderer);
+	UIObj = new UI(RendererObj);
 
 	//Create level manager
 	LevelObj = new LevelManager(RendererObj);
@@ -20,70 +20,75 @@ Game::Game()
 	//Create entity manager
 	EMObj = new EntityManager(RendererObj, CameraObj, InputObj, LevelObj);
 
-	
-
-	//Create the Player
-	//PlayerObj = new Player(CameraObj, RendererObj, 2);
-
+	//Create audio manager
+	AudioObj = new Audio;
 
 }
 
 Game::~Game()
 {
-	/*if (PlayerObj)
+	if (AudioObj)
 	{
-		delete PlayerObj;
-		PlayerObj = nullptr;
-	}*/
+		std::cout << "Deleted AudioObj" << std::endl;
+		delete AudioObj;
+		AudioObj = nullptr;
+	}
+
+	if (EMObj)
+	{
+		std::cout << "Deleted EMObj" << std::endl;
+		delete EMObj;
+		EMObj = nullptr;
+	}
 
 	if (LevelObj)
 	{
+		std::cout << "Deleted LevelObj" << std::endl;
 		delete LevelObj;
 		LevelObj = nullptr;
 	}
 
 	if (UIObj)
 	{
+		std::cout << "Deleted UIObj" << std::endl;
 		delete UIObj;
 		UIObj = nullptr;
 	}
 
 	if (InputObj)
 	{
+		std::cout << "Deleted InputObj" << std::endl;
 		delete InputObj;
 		InputObj = nullptr;
 	}
 
 	if (RendererObj)
 	{
+		std::cout << "Deleted RendererObj" << std::endl;
 		delete RendererObj;
 		RendererObj = nullptr;
 	}
 
 	if (CameraObj)
 	{
+		std::cout << "Deleted CameraObj" << std::endl;
 		delete CameraObj;
 		CameraObj = nullptr;
 	}
 
-	//Destroy in reverse order they were created
-	/*if (m_Renderer) 
-	{
-		SDL_DestroyRenderer(m_Renderer);
-	}
-
-	if (m_Window) 
-	{
-		SDL_DestroyWindow(m_Window);
-	}*/
+	
 }
 
 void Game::GameLoop()
 {
-	EMObj->CreatePlayer(75, -50);
+	EMObj->CreatePlayer(75, 135);
 	LevelObj->RenderLevel();
-	while (true)
+	while (!InputObj->KeyIsPressed(KEY_ESCAPE) && !InputObj->ControllerIsPressed(BUTTON_B))
 	{
+		//Start frame timing
+		Uint32 StartTick = SDL_GetTicks();
+		Uint64 StartPerf = SDL_GetPerformanceCounter();
+
 		//Check for input
 		InputObj->Update();
 
@@ -92,8 +97,18 @@ void Game::GameLoop()
 		
 		//Render scene
 		RendererObj->RenderLoop();
-		SDL_Delay(20);
 
+		//Display UI
+		UIObj->PresentUi();
+
+		//End frame timing
+		Uint32 EndTicks = SDL_GetTicks();
+		Uint64 EndPerf = SDL_GetPerformanceCounter();
+		Uint64 FramePerf = EndPerf - StartPerf;
+		float FrameTime = 1.0f/((EndTicks - StartTick) / 1000.0f);
+		UIObj->SetFPS(FrameTime);
+		SDL_Delay(20);
+		
 	}
 
 	std::cout << "Game ended" << std::endl;

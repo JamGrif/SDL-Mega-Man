@@ -39,6 +39,7 @@ namespace NSRenderer
 
 	Sprite::Sprite(SDL_Renderer* renderer)
 	{
+		std::cout << "Created Sprite" << std::endl;
 		m_pRenderer = renderer;
 
 		SetSprite("Assets/MissingPic.bmp");
@@ -110,6 +111,7 @@ namespace NSRenderer
 
 	Renderer::Renderer(Camera* camera)
 	{
+		std::cout << "Created Renderer" << std::endl;
 		m_pcamera = camera;
 
 		m_Window = nullptr;

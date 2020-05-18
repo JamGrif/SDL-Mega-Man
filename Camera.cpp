@@ -2,7 +2,7 @@
 
 Camera::Camera(int ScreenWidth, int ScreenHeight)
 {
-
+	std::cout << "Created Camera" << std::endl;
 	//m_pplayer = player;
 
 	m_ScreenWidth = ScreenWidth;

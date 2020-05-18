@@ -29,7 +29,15 @@ protected:
 
 	bool m_VerticalMoving = false;
 	bool m_HorizontalMoving = false;
-	bool Falling = false;
+
+	bool IsGrounded = false;
+	bool AppliedGravity = false;
+
+	bool IsJumping = false;
+	bool CanJump = false;
+	const float m_JumpSpeed = 40;
+	const float m_JumpMaxTick = 40;
+	float m_JumpCurrentTick = 0;
 
 	LevelManager* m_plevelmanager;
 

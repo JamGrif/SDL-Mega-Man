@@ -13,7 +13,8 @@ Player::Player(Camera* camera, Renderer* renderer, Input* input, LevelManager* l
 	m_Height = 48;
 
 	//Set the player sprite to the default sprite
-	m_object->SetSprite("Assets/PlayerIdle1.bmp");
+	m_object->SetSprite(PlayerIdle1R);
+	SpriteToUse = PlayerIdle1R;
 
 	m_object->SetX(X);
 	m_object->SetY(Y);
@@ -22,6 +23,25 @@ Player::Player(Camera* camera, Renderer* renderer, Input* input, LevelManager* l
 
 	m_Acceleration = 4;
 
+	PlayerRunL.push_back(PlayerRun1L);
+	PlayerRunL.push_back(PlayerRun1L);
+	PlayerRunL.push_back(PlayerRun1L);
+	PlayerRunL.push_back(PlayerRun2L);
+	PlayerRunL.push_back(PlayerRun2L);
+	PlayerRunL.push_back(PlayerRun2L);
+	PlayerRunL.push_back(PlayerRun3L);
+	PlayerRunL.push_back(PlayerRun3L);
+	PlayerRunL.push_back(PlayerRun3L);
+
+	PlayerRunR.push_back(PlayerRun1R);
+	PlayerRunR.push_back(PlayerRun1R);
+	PlayerRunR.push_back(PlayerRun1R);
+	PlayerRunR.push_back(PlayerRun2R);
+	PlayerRunR.push_back(PlayerRun2R);
+	PlayerRunR.push_back(PlayerRun2R);
+	PlayerRunR.push_back(PlayerRun3R);
+	PlayerRunR.push_back(PlayerRun3R);
+	PlayerRunR.push_back(PlayerRun3R);
 
 }
 
@@ -47,17 +67,24 @@ void Player::Update()
 	}
 	if (m_pinput->KeyIsPressed(KEY_W))
 	{
-		Up();
+		//Up();
 		//std::cout << "up" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_S))
 	{
-		Down();
+		//Down();
 		//std::cout << "down" << std::endl;
 	}
 	if (m_pinput->KeyIsPressed(KEY_SPACE) || m_pinput->ControllerIsPressed(BUTTON_A))
 	{
-		std::cout << "jumped" << std::endl;
+		if (CanJump)
+		{
+			//std::cout << "jumping activated" << std::endl;
+			IsJumping = true;
+			CanJump = false;
+			m_JumpCurrentTick = 0;
+			m_VerticalMoving = true;
+		}
 	}
 
 	/*
@@ -78,31 +105,74 @@ void Player::Update()
 			if (0 - Velocity.x < Velocity.x) { Velocity.x = 0; }
 		}
 	}
-	
-	
-	if (m_VerticalMoving) 
-	{
-		if (Velocity.y != 0)
-		{
-			if (Velocity.y > 0)
-			{
-				Velocity.y -= m_AirResistance;
-				if (0 - Velocity.y > Velocity.y) { Velocity.y = 0; }
-			}
-			else if (Velocity.y < 0)
-			{
-				Velocity.y += m_AirResistance;
-				if (0 - Velocity.y < Velocity.y) { Velocity.y = 0; }
-			}
-		}
-	}
 
 	/*
 		Gravity
 	*/
 
-	//
+	//Gravity only applies if player not jumping
+	if (!IsJumping)
+	{
+		
+		//Check pixel directly below player
+		if (!m_plevelmanager->CheckForWall(m_Top, m_Bottom + 3, m_Left, m_Right))
+		{
+			IsGrounded = false;
+			CanJump = false;
+		}
+		else
+		{
+			if (!IsJumping) { CanJump = true; }
+		}
 
+		//If player is not grounded then apply gravity
+		if (!IsGrounded)
+		{
+
+			if (!AppliedGravity)
+			{
+				//std::cout << "gravity applied" << std::endl;
+				Velocity.y += m_Gravity;
+				AppliedGravity = true;
+				m_VerticalMoving = true;
+			}
+
+
+		}
+		else
+		{
+			AppliedGravity = false;
+			Velocity.y = 0;
+		}
+
+	}
+
+	/*
+		Jumping
+	*/
+	//std::cout << m_object->GetY() << std::endl;
+	if (IsJumping) 
+	{
+		//std::cout << "hello1" << std::endl;
+		//std::cout << "currenttick is " << m_JumpCurrentTick << std::endl;
+		//std::cout << "maxtick is " << m_JumpMaxTick << std::endl;
+
+		if (m_JumpCurrentTick < m_JumpMaxTick) 
+		{
+			Velocity.y -= 0.1;
+			m_JumpCurrentTick++;
+			//std::cout << "hello2" << std::endl;
+		}
+		else 
+		{
+			//std::cout << "stop jumping" << std::endl;
+			IsJumping = false;
+			m_JumpCurrentTick = 0;
+			Velocity.y = 0;
+		}
+	}
+
+	
 	/*
 		Collision check and movement
 	*/
@@ -113,28 +183,11 @@ void Player::Update()
 		m_object->SetX(m_object->GetX() + Velocity.x);
 		
 		UpdateCollisionPosition();
+
 		//Check collision with level 
-		//if there is wall then keep checking until there is no wall. this allows the object to be right against the wall as opposed to a few pixels away from it
-		//-------------------------------------------------------------------------
 		if (m_plevelmanager->CheckForWall(m_Top, m_Bottom, m_Left, m_Right))
 		{
-		/*	int LeftOffset = 0;
-			int RightOffset = 0;
-			//Player is about to collide with wall so find players new position by reducing left/right face until there is no collision
-			while (m_plevelmanager->CheckForWall(m_Top, m_Bottom, m_Left+(LeftOffset), m_Right+(RightOffset)))
-			{
-				std::cout << "in while loop" << std::endl;
-				//velocity going right
-				if (Velocity.x > 0) { RightOffset--; }
-				else { LeftOffset++; }
-				//Velocity.x + 1;
-			}
-			*/
-			//std::cout << "needs to move " << RightOffset << " to the right" << std::endl;
-			//std::cout << "l is " << l << std::endl;
-			
-			//std::cout << "vx is " << (Velocity.x + LeftOffset + RightOffset) << std::endl;
-			m_object->SetX(m_object->GetX() - Velocity.x); //------------------ need to change velocity.x to a different number
+			m_object->SetX(m_object->GetX() - Velocity.x); 
 			Velocity.x = 0;
 		}
 	}
@@ -142,23 +195,89 @@ void Player::Update()
 	//Check for collision and move object vertically
 	if (m_VerticalMoving)
 	{
+		//std::cout << Velocity.y << std::endl;
 		m_object->SetY(m_object->GetY() + Velocity.y);
 
 		UpdateCollisionPosition();
-		//Check collision with level 
-		if (m_plevelmanager->CheckForWall(m_Top, m_Bottom, m_Left, m_Right))
+		/*
+		//If velocity.y is negative then player is jumping
+		if (Velocity.y < 0) 
+		{	//Check above player to see if player can still jump
+			if (m_plevelmanager->CheckForWall(m_Top + 4, m_Bottom, m_Left, m_Right)) 
+			{
+				IsJumping = false;
+			}
+		}*/
+		if (!IsJumping) 
 		{
-			m_object->SetY(m_object->GetY() - Velocity.y);
-			Velocity.y = 0;
+			if (AppliedGravity)
+			{
+				if (m_plevelmanager->CheckForWall(m_Top, m_Bottom, m_Left, m_Right))
+				{
+
+					m_object->SetY(m_object->GetY() - Velocity.y);
+					Velocity.y = 0;
+
+					CanJump = true;
+					IsGrounded = true;
+					AppliedGravity = false;
+				}
+				else
+				{
+					IsGrounded = false;
+				}
+			}
 		}
+		
+		
+		
+		
 	}
 
+	//std::cout << Velocity.y << std::endl;
 	if (Velocity.x == 0) { m_HorizontalMoving = false; }
 	if (Velocity.y == 0) { m_VerticalMoving = false; }
+
+	//std::cout << "Isjumping is " << IsJumping << std::endl;
+	//std::cout << "CanJump is " << CanJump << std::endl;
+
+	SpriteUpdate();
 
 	//Centers the camera on the player
 	m_pcamera->CenterCamera(m_object->GetX(), m_object->GetY());
 }
+
+void Player::SpriteUpdate()
+{
+	if (m_HorizontalMoving)
+	{
+		//Running left
+		if (Velocity.x < 0) 
+		{
+			FacingRight = false;
+			m_CurrentFrame++;
+			if (m_CurrentFrame > 8) { m_CurrentFrame = 0; }
+			SpriteToUse = PlayerRunL.at(m_CurrentFrame);
+		}
+		//Running right
+		else
+		{
+			FacingRight = true;
+			m_CurrentFrame++;
+			if (m_CurrentFrame > 8) { m_CurrentFrame = 0; }
+			SpriteToUse = PlayerRunR.at(m_CurrentFrame);
+		}
+	}
+	else 
+	{
+		SpriteToUse = FacingRight ? PlayerIdle1R : PlayerIdle1L;
+		m_CurrentFrame = 0;
+	}
+
+	m_object->SetSprite(SpriteToUse);
+}
+
+
 
 
 

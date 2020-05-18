@@ -2,6 +2,7 @@
 
 Entity::Entity(Renderer* renderer, int LayerNum)
 {
+	std::cout << "Created Entity" << std::endl;
 	//Store the renderer for future configuring and drawing
 	m_prenderer = renderer;
 

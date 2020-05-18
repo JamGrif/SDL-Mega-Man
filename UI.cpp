@@ -1,11 +1,9 @@
 #include "UI.h"
 
-UI::UI(SDL_Renderer* renderer)
+UI::UI(Renderer* renderer)
 {
-	std::cout << "UI created!" << std::endl;
-	m_pRenderer = renderer;
-
-
+	std::cout << "Created UIManager" << std::endl;
+	m_prenderer = renderer;
 
 }
 
@@ -14,62 +12,50 @@ UI::~UI()
 	
 }
 
-// Text we want to display, screen X and Y positions, font we want to use, colour of text
-void UI::PresentUi(int PCoins)
+void UI::SetFPS(float fps)
 {
-	CoinsCollected = PCoins;
+	FPS = fps;
+}
+
+// Text we want to display, screen X and Y positions, font we want to use, colour of text
+void UI::PresentUi()
+{
 	surface = nullptr;
 	texture = nullptr;
 
 	m_pFont = TTF_OpenFont("Assets/DejaVuSans.ttf", 40);
 
-	//First line of Ui
+	//"FPS:"
 	surface = TTF_RenderText_Solid(m_pFont, FirstLine.c_str(), color);
 
-	texture = SDL_CreateTextureFromSurface(m_pRenderer, surface);
+	texture = SDL_CreateTextureFromSurface(m_prenderer->GetRenderer(), surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
 
-	textRect = { 0, 600, texW, texH };
+	textRect = { 0, 1, texW, texH };
 
-	SDL_RenderCopy(m_pRenderer, texture, NULL, &textRect);
-
-	SDL_DestroyTexture(texture);
-
-	SDL_FreeSurface(surface);
-	
-	//Second line of Ui
-	surface = TTF_RenderText_Solid(m_pFont, SecondLine.c_str(), color);
-
-	texture = SDL_CreateTextureFromSurface(m_pRenderer, surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-
-	textRect = { 170, 0, texW, texH };
-
-	SDL_RenderCopy(m_pRenderer, texture, NULL, &textRect);
+	SDL_RenderCopy(m_prenderer->GetRenderer(), texture, NULL, &textRect);
 
 	SDL_DestroyTexture(texture);
 
 	SDL_FreeSurface(surface);
 
-	//Coins collected
-	SCoinsCollected = std::to_string(CoinsCollected);
-	surface = TTF_RenderText_Solid(m_pFont, SCoinsCollected.c_str(), color);
+	//Actual fps
+	surface = TTF_RenderText_Solid(m_pFont, std::to_string(FPS).c_str(), color);
 
-	texture = SDL_CreateTextureFromSurface(m_pRenderer, surface);
+	texture = SDL_CreateTextureFromSurface(m_prenderer->GetRenderer(), surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
 
-	textRect = { 150, 650, texW, texH };
+	textRect = { 85, 1, texW, texH };
 
-	SDL_RenderCopy(m_pRenderer, texture, NULL, &textRect);
+	SDL_RenderCopy(m_prenderer->GetRenderer(), texture, NULL, &textRect);
+
 	
-
+	SDL_DestroyTexture(texture);
+	
+	SDL_FreeSurface(surface);
+	
 	//Cleanup
-	SDL_DestroyTexture(texture);
-	
-	SDL_FreeSurface(surface);
-	
 	TTF_CloseFont(m_pFont);
 }

@@ -2,7 +2,7 @@
 
 EntityManager::EntityManager(Renderer* renderer, Camera* camera, Input* input, LevelManager* levelmanager)
 {
-
+	std::cout << "Created EntityManager" << std::endl;
 	m_prenderer = renderer;
 
 	m_pcamera = camera;
